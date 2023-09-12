@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
+import styles from "./SignUp.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "./toast";
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [touched, setTouched] = useState({});
 
-  const handleInputChange = (event) => {
+  const changeHandler = (event) => {
     const { name, value } = event.target;
     if (name === 'email') {
       setEmail(value);
     } else if (name === 'password') {
       setPassword(value);
     }
+  };
+
+  const focusHandler = (event) => {
+    setTouched({ ...touched, [event.target.name]: true });
   };
 
   const handleLogin = async (event) => {
@@ -42,7 +50,7 @@ function Login() {
       } else {
         // Handle login error
         const errorText = await response.text();
-        setError(errorText);
+        notify(errorText);
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -50,41 +58,32 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <div className="error">{error}</div>}
-      <form onSubmit={handleLogin}>
+    <div className={styles.container}>
+    <form className={styles.formLogin} onSubmit={handleLogin} autoComplete="off">
+      <h2>Log In</h2>
+      <div>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-            required
-          />
+          <input type="text" name="email"  placeholder="E-mail" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
+        
         </div>
+      </div>
+      <div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleInputChange}
-            required
-          />
+          <input type="password" name="password"  placeholder="Password" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
+          
         </div>
+      </div>
+
+      <div>
         <button type="submit">Login</button>
-
-        <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
-
-      </form>
-    </div>
-  );
-}
+        <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
+         <h4>Don't have a account?</h4>  <Link to="/Register">Create account</Link>
+        </span>
+      </div>
+    </form>
+    <ToastContainer />
+  </div>
+);
+};
 
 export default Login;
