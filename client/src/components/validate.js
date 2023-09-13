@@ -17,25 +17,31 @@ export const validate = (data, type) => {
     delete errors.password;
   }
 
-  if (type === "signUp") {
-    if (!data.name.trim()) {
-      errors.name = "Username is Required!";
-    } else {
-      delete errors.name;
-    }
-    if (!data.confirmPassword) {
-      errors.confirmPassword = "Confirm the Password";
-    } else if (!(data.confirmPassword === data.password)) {
-      errors.confirmPassword = "Password is not match!";
-    } else {
-      delete errors.confirmPassword;
-    }
+  if (!data.contact) {
+    errors.contact = "Contact is Required";
+  } 
+ else {
+    delete errors.contact;
+  }
 
-    if (data.IsAccepted) {
-      delete errors.IsAccepted;
+  if (!data.college) {
+    errors.college = "college is Required";
+  } 
+ else {
+    delete errors.college;
+  }
+
+  if (type === "signUp") {
+    if (!data.username.trim()) {
+      errors.username = "Username is Required!";
     } else {
-      errors.IsAccepted = "Accept terms!";
+      delete errors.username;
     }
+  }
+  if (!data.prn.trim()) {
+    errors.prn = "PRN is Required!";
+  } else {
+    delete errors.prn;
   }
 
   return errors;

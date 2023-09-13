@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { validate } from "./validate";
+import styles from "./SignUp.module.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import { notify } from "./toast";
 
 function Registration() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [contact, setContact] = useState("");
-  const [college, setCollege] = useState("");
-  const [prn, setPrn] = useState("");
-  const [error, setError] = useState("");
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    prn:"",
+    college:"",
+    contact:"",
+    role:"user",
+    IsAccepted: false,
+  });
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+
+  useEffect(() => {
+    setErrors(validate(data, "signUp"));
+  }, [data, touched]);
+
+  const changeHandler = (event) => {
+    if (event.target.name === "IsAccepted") {
+      setData({ ...data, [event.target.name]: event.target.checked });
+    } else {
+      setData({ ...data, [event.target.name]: event.target.value });
+    }
+  };
+
+  const focusHandler = (event) => {
+    setTouched({ ...touched, [event.target.name]: true });
+  };
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -18,15 +44,7 @@ function Registration() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        password,
-        username,
-        contact,
-        college,
-        prn,
-        role: "user", 
-      }),
+      body: JSON.stringify(data),
     };
 
     try {
@@ -38,81 +56,74 @@ function Registration() {
         const data = await response.json();
         navigate("/"); 
       } else {
-        
-        setError("Registration failed");
+        const errorText = await response.text();
+        notify(errorText);
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("An error occurred while registering");
+      notify("An error occurred while registering");
     }
   };
 
   return (
-    <div>
-      <h2>Registration</h2>
-      <form onSubmit={handleRegistration}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className={styles.container}>
+    <form className={styles.formLogin} onSubmit={handleRegistration} >
+      <h2>Sign Up</h2>
+      <div>
+        <div className={errors.username && touched.username ? styles.unCompleted : !errors.username && touched.username ? styles.completed : undefined}>
+          <input type="text" name="username" value={data.username} placeholder="Name" onChange={changeHandler} onFocus={focusHandler}  />
+         
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        {errors.username && touched.username && <span className={styles.error}>{errors.username}</span>}
+      </div>
+
+      <div>
+        <div className={errors.prn && touched.prn ? styles.unCompleted : !errors.prn && touched.prn ? styles.completed : undefined}>
+          <input type="text" name="prn" value={data.prn} placeholder="PRN" onChange={changeHandler} onFocus={focusHandler}  />
         </div>
-        <div>
-          <label>Full Name:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+        {errors.prn && touched.prn && <span className={styles.error}>{errors.prn}</span>}
+      </div>
+
+      <div>
+        <div className={errors.contact && touched.contact ? styles.unCompleted : !errors.contact && touched.contact ? styles.completed : undefined}>
+          <input type="text" name="contact" value={data.contact} placeholder="Phone No" onChange={changeHandler} onFocus={focusHandler}  />
         </div>
-        <div>
-          <label>Contact Number:</label>
-          <input
-            type="number"
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
-            required
-          />
+        {errors.contact && touched.contact && <span className={styles.error}>{errors.contact}</span>}
+      </div>
+
+      <div>
+        <div className={errors.college && touched.college ? styles.unCompleted : !errors.college && touched.college ? styles.completed : undefined}>
+          <input type="text" name="college" value={data.college} placeholder="Collage / University" onChange={changeHandler} onFocus={focusHandler}  />
         </div>
-        <div>
-          <label>College/University:</label>
-          <input
-            type="text"
-            value={college}
-            onChange={(e) => setCollege(e.target.value)}
-            required
-          />
+        {errors.college && touched.college && <span className={styles.error}>{errors.college}</span>}
+      </div>
+
+
+      <div>
+        <div className={errors.email && touched.email ? styles.unCompleted : !errors.email && touched.email ? styles.completed : undefined}>
+          <input type="text" name="email" value={data.email} placeholder="E-mail" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
+         
         </div>
-        <div>
-          <label>PRN:</label>
-          <input
-            type="number"
-            value={prn}
-            onChange={(e) => setPrn(e.target.value)}
-            required
-          />
+        {errors.email && touched.email && <span className={styles.error}>{errors.email}</span>}
+      </div>
+      <div>
+        <div className={errors.password && touched.password ? styles.unCompleted : !errors.password && touched.password ? styles.completed : undefined}>
+          <input type="password" name="password" value={data.password} placeholder="Password" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
+
         </div>
-        <button type="submit">Register</button>
-      </form>
-      {error && <p>{error}</p>}
-      <p>
-        Already have an account? <Link to="/">Login</Link>
-      </p>
-    </div>
-  );
-}
+        {errors.password && touched.password && <span className={styles.error}>{errors.password}</span>}
+      </div>
+
+      <div>
+        <button type="submit">Create Account</button>
+        <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
+          Already have a account? <Link to="/">Sign In</Link>
+        </span>
+      </div>
+    </form>
+    <ToastContainer />
+  </div>
+);
+};
 
 export default Registration;
