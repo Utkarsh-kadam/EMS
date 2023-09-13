@@ -7,24 +7,22 @@ import { UpdateEvent } from "./updateEvent";
 function EventCard({ data,handleEdit, handleDelete }) {
     const { _id, name, description,date,venue,imageUrl } = data;
     return (
-        <li key={_id}>
-
+        <li key={_id} className="event-card">
             <div className="image-container">
                 <img src={imageUrl} alt={name} className="event-image" />
             </div>
-            <div className="title-description">
-                <h3>{name}</h3>
-                <p>{description}</p>
-                <p>Date : {date}</p>
-                <p>Venue : {venue}</p>
+            <div className="text-container">
+                <h3 className="event-title">{name}</h3>
+                <p className="event-description">{description}</p>
+                <p className="event-info"><strong>Date:</strong> {date}</p>
+                <p className="event-info"><strong>Venue:</strong> {venue}</p>
             </div>
-
             <div className="button-container">
             <button className="button" name={_id} onClick={handleEdit}> 
-                    edit
+                    <strong>Edit</strong> 
                 </button>
                 <button className="button" name={_id} onClick={handleDelete}>
-                    delete
+                   <strong>Delete</strong>
                 </button>
             </div>
         </li>
@@ -65,7 +63,6 @@ export function ShowEventList() {
     function handleDelete(e) { 
         axios.delete(`http://localhost:3000/event${e.target.name}`);
     
-
         setEvent((data) => {
             return data.filter((event) => event._id !== e.target.name);
         });
@@ -78,12 +75,14 @@ export function ShowEventList() {
 
     return (
         <section className="container">
-            <h1>Admin Portel</h1>
+            <h1 className="admin-title">Admin Portal</h1>
             <Link to="/create-event" className="button-new">
-                <button className="button">New</button>
+                <button className="button">
+                   <strong>New</strong> 
+                    </button>
             </Link>
             <section className="contents">
-                <h1>Events</h1>
+                <h3 className="events-title large-font">Events</h3>
                 <ul className="list-container">
                     {event.map((data) => (
                         <EventCard
@@ -110,7 +109,7 @@ export function ShowEventList() {
                     </div>
                 </section>
             ) : (
-                ""
+                null
             )}
         </section>
     );

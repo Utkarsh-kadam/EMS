@@ -40,7 +40,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
 
     return (
         <form
-            className="form-container"
+            className="form-container update-form"
             onSubmit={(e) => {
                 handleSubmit(e);
                 handleUpdate();
@@ -49,7 +49,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
         >
         
             <label htmlFor="name" className="label">
-                name
+                Name
             </label>
             <input
                 type="text"
@@ -81,7 +81,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
                     />
 
             <label className="label" htmlFor="organizer">
-                     organizer
+                     Organizer
                     </label>
                     <input
                         type="text"
@@ -92,7 +92,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
                     />
 
                     <label className="label" htmlFor="date">
-                    date
+                    Date
                     </label>
                     <input
                         type="text"
@@ -103,7 +103,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
                     />
 
                     <label className="label" htmlFor="time">
-                    time
+                    Time
                     </label>
                     <input
                         type="text"
@@ -114,7 +114,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
                     />
 
                     <label className="label" htmlFor="venue">
-                    venue
+                    Venue
                     </label>
                     <input
                         type="text"
@@ -124,7 +124,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
                         value={data.venue}
                     />
             <button type="submit" className="button">
-                Submit
+                Update
             </button>
         </form>
     );

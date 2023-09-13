@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
 
 export function CreateEvent() {
@@ -39,17 +38,14 @@ export function CreateEvent() {
         <section className="container">
             <Link to="/event" className="button-back">
                 <button type="button" className="button">
-                    back
+                    Back
                 </button>
             </Link>
             <section className="contents">
-                <form
-                    onSubmit={handleSubmit}
-                    className="form-container"
-                    noValidate
-                >
+                <form onSubmit={handleSubmit} className="form-container" noValidate>
+                <div className="form-group">
                     <label className="label" htmlFor="name">
-                        Name
+                        Event Name
                     </label>
                     <input
                         type="text"
@@ -57,8 +53,11 @@ export function CreateEvent() {
                         value={data.name}
                         onChange={handleChange}
                         className="input"
+                        required
                     />
+                    </div>
 
+                    <div className="form-group">
                     <label className="label" htmlFor="description">
                         Description
                     </label>
@@ -68,8 +67,11 @@ export function CreateEvent() {
                         value={data.description}
                         onChange={handleChange}
                         className="input"
+                        required
                     />
+                    </div>
 
+                 <div className="form-group">
                     <label className="label" htmlFor="imageUrl">
                         Image Link
                     </label>
@@ -80,11 +82,10 @@ export function CreateEvent() {
                         onChange={handleChange}
                         className="input"
                     />
-
-
-
+                    </div>
+                <div className="form-group">
                     <label className="label" htmlFor="organizer">
-                     organizer
+                     Organizer
                     </label>
                     <input
                         type="text"
@@ -93,9 +94,11 @@ export function CreateEvent() {
                         onChange={handleChange}
                         className="input"
                     />
+                    </div>
 
+                    <div className="form-group">
                     <label className="label" htmlFor="date">
-                    date
+                    Date
                     </label>
                     <input
                         type="text"
@@ -104,9 +107,11 @@ export function CreateEvent() {
                         onChange={handleChange}
                         className="input"
                     />
+                    </div>
 
+                    <div className="form-group">
                     <label className="label" htmlFor="time">
-                    time
+                    Time
                     </label>
                     <input
                         type="text"
@@ -115,9 +120,10 @@ export function CreateEvent() {
                         onChange={handleChange}
                         className="input"
                     />
-
+                    </div>
+                    <div className="form-group">
                     <label className="label" htmlFor="venue">
-                    venue
+                    Venue
                     </label>
                     <input
                         type="text"
@@ -126,10 +132,10 @@ export function CreateEvent() {
                         onChange={handleChange}
                         className="input"
                     />
-
+                    </div>
                     
                     <button type="submit" className="button">
-                        Create event
+                        Create Event
                     </button>
                 </form>
             </section>

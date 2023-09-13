@@ -10,6 +10,69 @@
 
 html {
     font-size: 67%;
+     overflow-x: hidden;
+}
+body {
+    background-color: #192329; 
+    color: white;
+    overflow-x: hidden;
+}
+
+a {
+    color: #559c95; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    justify-content: center; 
+  align-items: center; 
+  margin-right: 2rem; 
+}
+
+.button-back {
+    margin-bottom: 2rem;
+
+}
+
+.form-container .input {
+    font-size: 1.4rem; 
+}
+.button-new {
+    white-space: nowrap; 
+    font-size: 1.2rem; 
+    padding: 0.5rem 1rem; 
+    width: auto; 
+   
+    @media screen and (max-width: 768px) {
+       
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+        max-width: 100%; 
+        margin-right: 1rem
+    }
+}
+
+
+
+.button {
+    margin: 0 auto; 
+    display: block; 
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #559c95;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    width: 80%;
+    align-self: center;
+}
+
+.button:hover {
+    background-color: #3a7f78;
 }
 
 .image-container {
@@ -28,7 +91,7 @@ button {
 }
 
 .app-contents {
-    background-color: #192329 ;
+    background-color: #192329;
     min-height: 100vh;
     height: max-content;
     width: 100vw;
@@ -50,19 +113,19 @@ button {
         "contents contents contents";
 }
 
-.button,
-.input {
+.button
+{
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: capitalize;
-
     border: none;
-    border-radius: 0.5rem;
-
+    border-radius: 25px;
     height: 4rem;
     width: 24rem;
+    align-self: center;
 }
+
 
 .button {
     display: flex;
@@ -71,7 +134,6 @@ button {
 .button-back,
 .button-new {
     width: 8rem;
-
 }
 
 .button-back {
@@ -100,7 +162,6 @@ button {
 
 .list-container {
     display: flex;
-
     flex-direction: column;
 
     li {
@@ -118,18 +179,25 @@ button {
         width: 24rem !important;
 
         margin: 0 auto 2rem;
+    }
         .title-description {
             text-align: left;
 
             h3 {
+                font-size: 1.5rem;
                 text-transform: capitalize;
                 margin-bottom: 1rem;
             }
+        }
+        .event-description,
+        .event-info {
+            font-size:1.5rem;
         }
 
         .button-container {
             display: flex;
             justify-content: space-between;
+            padding-top: 10%;
 
             button {
                 &:first-of-type {
@@ -137,14 +205,12 @@ button {
                 }
             }
         }
-    }
-
+    
     @media only screen and (min-width: 768px) {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
         gap: 2rem;
         width: 60rem;
-
         margin: 0 auto;
     }
 
@@ -157,35 +223,33 @@ button {
 .form-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-
-    width: 25rem;
-
+    
+    width: 40rem;
     font-size: 2rem;
 
     .label {
         margin-bottom: 0.8rem;
+        align-self: flex-start;
     }
 
     .input {
         margin-bottom: 2rem;
         text-align: center;
+        align-self: end;
     }
 }
 
 .update-container {
     position: absolute;
-    top: 0;
+    top: 10rem;
     left: 0;
-
     height: 100vh;
     width: 100vw;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #176799;
 
     .update-contents {
         display: grid;
@@ -193,7 +257,7 @@ button {
             "close"
             "form";
 
-        background-color: hsl(220, 13%, 28%);
+        background-color: #192329;
 
         padding: 2rem 4rem 4rem;
 
@@ -203,12 +267,10 @@ button {
             grid-area: close;
             color: white;
             font-weight: 700;
-
             display: flex;
             justify-content: flex-end;
-
             margin-bottom: 4rem;
-
+            margin-top: 5rem;
             cursor: pointer;
         }
 
@@ -216,4 +278,59 @@ button {
             grid-area: form;
         }
     }
+}
+.list-container li:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem; 
+    cursor: pointer;
+}
+
+
+
+.admin-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.events-title {
+    text-align: center;
+    margin-bottom: 2rem;
+
+}
+.large-font {
+    font-size: 4rem;
+}
+
+
+.update-form {
+    margin-top: 100px; 
+}
+
+.form-group {
+    display: flex; 
+    align-items: center; 
+    text-align: center; 
+    padding: 1px;
+}
+
+
+.label {
+    flex:2; 
+    font-weight: bold;
+    margin-right: 1rem; 
+    text-align: left;  
+}
+
+
+.input {
+    flex: 2; 
+    margin-bottom: 1rem;
+    padding: 0.5rem; 
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1.8rem;
+    text-align: center; 
+    width: 100%;
 }
