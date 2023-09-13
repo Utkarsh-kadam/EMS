@@ -58,6 +58,9 @@ function Login() {
   };
 
   return (
+    <div>  
+      <h2> College Event Management System</h2>
+
     <div className={styles.container}>
     <form className={styles.formLogin} onSubmit={handleLogin} autoComplete="off">
       <h2>Log In</h2>
@@ -76,12 +79,13 @@ function Login() {
 
       <div>
         <button type="submit">Login</button>
-        <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h4>Don't have a account?</h4>  <Link to="/Register">Create account</Link>
+        <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
+         <h5>Don't have a account?</h5>  <Link to="/Register">Create account</Link>
         </span>
       </div>
     </form>
     <ToastContainer />
+  </div>
   </div>
 );
 };

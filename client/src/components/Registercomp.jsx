@@ -66,6 +66,8 @@ function Registration() {
   };
 
   return (
+    <div>
+      <h2> College Event Management System</h2>
     <div className={styles.container}>
     <form className={styles.formLogin} onSubmit={handleRegistration} >
       <h2>Sign Up</h2>
@@ -116,12 +118,13 @@ function Registration() {
 
       <div>
         <button type="submit">Create Account</button>
-        <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
-          Already have a account? <Link to="/">Sign In</Link>
+        <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
+         <h5> Already have a account?</h5> <Link to="/">Login</Link>
         </span>
       </div>
     </form>
     <ToastContainer />
+  </div>
   </div>
 );
 };
