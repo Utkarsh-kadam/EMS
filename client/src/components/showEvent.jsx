@@ -61,7 +61,8 @@ export function ShowEventList() {
     }
 
     function handleDelete(e) { 
-        axios.delete(`http://localhost:3000/event${e.target.name}`);
+        console.log(e.target.name)
+        axios.delete(`http://localhost:3000/event/${e.target.name}`);
     
         setEvent((data) => {
             return data.filter((event) => event._id !== e.target.name);
