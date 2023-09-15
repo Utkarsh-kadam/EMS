@@ -8,10 +8,11 @@ function EventCard({ data,handleEdit, handleDelete }) {
     const { _id, name, description,date,venue,imageUrl } = data;
     return (
         <li key={_id} className="event-card">
+        <div className="text-container">
             <div className="image-container">
                 <img src={imageUrl} alt={name} className="event-image" />
             </div>
-            <div className="text-container">
+           
                 <h3 className="event-title">{name}</h3>
                 <p className="event-description">{description}</p>
                 <p className="event-info"><strong>Date:</strong> {date}</p>

@@ -84,6 +84,7 @@ a {
 .event-image {
     max-width: 100%; 
     height: auto; 
+    border-radius: 1rem;
 }
 
 button {
@@ -166,14 +167,11 @@ button {
 
     li {
         background-color: hsl(220, 13%, 28%);
-        border-radius: 0.5rem;
-
+        border-radius: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
-        padding: 2rem;
-
+        padding: 1rem;
         min-height: 20rem;
         height: max-content;
         width: 24rem !important;
@@ -321,6 +319,13 @@ button {
     font-weight: bold;
     margin-right: 1rem; 
     text-align: left;  
+}
+
+.text-container{
+    background-color:#192329;
+    padding: 5px;
+    border-radius: 1rem;
+    margin-top: 3px;
 }
 
 
