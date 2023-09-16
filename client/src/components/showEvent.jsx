@@ -14,8 +14,8 @@ function EventCard({ data,handleEdit, handleDelete }) {
             </div>
            
                 <h3 className="event-title">{name}</h3>
-                <p className="event-description">{description}</p>
-                <p className="event-info"><strong>Date:</strong> {date}</p>
+                {/* <p className="event-description">{description}</p> */}
+                <p className="event-info"><strong>{date}</strong></p>
                 <p className="event-info"><strong>Venue:</strong> {venue}</p>
             </div>
             <div className="button-container">
@@ -41,7 +41,6 @@ export function ShowEventList() {
             axios
                 .get("http://localhost:3000/event")
                 .then((res) => {
-                    console.log(res.data);
                     setEvent(res.data);
                 })
                 .catch((err) => {

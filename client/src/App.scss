@@ -22,15 +22,7 @@ a {
     color: #559c95; 
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-    justify-content: center; 
-  align-items: center; 
-  margin-right: 2rem; 
-}
+
 
 .button-back {
     margin-bottom: 2rem;
@@ -101,7 +93,6 @@ button {
     align-items: center;
     font-size: calc(10px + 2vmin);
     color: white;
-    padding-top: 4rem;
 }
 
 .container {
@@ -119,19 +110,13 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-transform: capitalize;
     border: none;
     border-radius: 25px;
-    height: 4rem;
-    width: 24rem;
+    height: 3rem;
+    width: 20rem;
     align-self: center;
 }
 
-
-.button {
-    display: flex;
-    margin: 0;
-}
 .button-back,
 .button-new {
     width: 8rem;
@@ -149,13 +134,10 @@ button {
 
 .contents {
     grid-area: contents;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     min-height: 80vh;
-
     h1 {
         margin-bottom: 4rem;
     }
@@ -164,7 +146,6 @@ button {
 .list-container {
     display: flex;
     flex-direction: column;
-
     li {
         background-color: hsl(220, 13%, 28%);
         border-radius: 1rem;
@@ -174,35 +155,35 @@ button {
         padding: 1rem;
         min-height: 20rem;
         height: max-content;
-        width: 24rem !important;
-
+        width: 25rem !important;
         margin: 0 auto 2rem;
-    }
-        .title-description {
+    
+        .event-title {
             text-align: left;
-
+            font-size: 2rem;
+            margin-left: 0.5rem;
             h3 {
-                font-size: 1.5rem;
+                font-size: 0.5rem;
                 text-transform: capitalize;
-                margin-bottom: 1rem;
+               
             }
         }
         .event-description,
         .event-info {
             font-size:1.5rem;
+            margin-left: 0.5rem;
         }
 
         .button-container {
             display: flex;
             justify-content: space-between;
-            padding-top: 10%;
-
             button {
                 &:first-of-type {
                     margin-right: 2rem;
                 }
             }
         }
+    }
     
     @media only screen and (min-width: 768px) {
         display: grid;
@@ -221,10 +202,8 @@ button {
 .form-container {
     display: flex;
     flex-direction: column;
-    
     width: 40rem;
     font-size: 2rem;
-
     .label {
         margin-bottom: 0.8rem;
         align-self: flex-start;
@@ -235,19 +214,20 @@ button {
         text-align: center;
         align-self: end;
     }
+
 }
 
 .update-container {
-    position: absolute;
-    top: 10rem;
+    position:relative;
+    top: 4rem;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    height:fit-content;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: #176799;
+    background-color: rgba(0, 0, 0, 0.4);
 
     .update-contents {
         display: grid;
@@ -255,10 +235,8 @@ button {
             "close"
             "form";
 
-        background-color: #192329;
-
-        padding: 2rem 4rem 4rem;
-
+        background-color: hsl(220, 13%, 28%);
+        padding: 1rem 4rem 4rem;
         border-radius: 0.5rem;
 
         .close {
@@ -266,9 +244,8 @@ button {
             color: white;
             font-weight: 700;
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 4rem;
-            margin-top: 5rem;
+            justify-content:center;
+            margin-top: 4rem;
             cursor: pointer;
         }
 
@@ -276,6 +253,26 @@ button {
             grid-area: form;
         }
     }
+    @media (max-width: 767px) {
+        .update-container {
+          top: 2rem;
+          left: 0;
+          width: 100%; /* Make sure the container takes the full width */
+          padding: 1rem;
+          overflow-x: hidden; /* Hide horizontal overflow */
+        }
+      
+        .update-contents {
+          padding: 1rem 2rem 2rem;
+          max-width: 100vw; /* Ensure the content doesn't overflow horizontally */
+        }
+      
+        .close {
+          margin-top: 2rem;
+        }
+      }
+    
+
 }
 .list-container li:hover {
     transform: translateY(-5px);
@@ -284,7 +281,6 @@ button {
     border-radius: 0.5rem; 
     cursor: pointer;
 }
-
 
 
 .admin-title {
@@ -301,10 +297,6 @@ button {
     font-size: 4rem;
 }
 
-
-.update-form {
-    margin-top: 100px; 
-}
 
 .form-group {
     display: flex; 

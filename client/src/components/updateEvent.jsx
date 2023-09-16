@@ -8,7 +8,6 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
         axios
             .get(`http://localhost:3000/event/${_id}`)
             .then((res) => {
-                // Populate the form fields with the existing event data
                 setData(res.data);
             })
             .catch((err) => {
@@ -40,7 +39,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
 
     return (
         <form
-            className="form-container update-form"
+            className="form-container"
             onSubmit={(e) => {
                 handleSubmit(e);
                 handleUpdate();
