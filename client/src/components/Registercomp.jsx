@@ -119,7 +119,7 @@ function Registration() {
       <div>
         <button type="submit">Create Account</button>
         <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h5> Already have a account?</h5> <Link to="/">Login</Link>
+         <h5> Already have a account?</h5> <Link className="link" to="/">Login</Link>
         </span>
       </div>
     </form>

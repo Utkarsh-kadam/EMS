@@ -40,7 +40,8 @@ a:hover {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:flex-start;
+  margin-top: 5rem;
   min-height: 100vh;
 }
 
@@ -51,6 +52,8 @@ a:hover {
 }
 h2{
   color: #dea114;
+  text-align: center;
+  padding: 2rem;
 }
 
 .formLogin > div {
@@ -70,6 +73,7 @@ h2{
   border: 1px solid var(--secondary-color);
   padding: 15px 32px;
   width: 100%;
+  font-size: 1.5 rem;
   font-family: Arial, Helvetica, sans-serif;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -115,19 +119,6 @@ h2{
 }
 
 
-.formLogin > div > div img {
-  position: absolute;
-  max-width: 20px;
-  max-height: 20px;
-  left: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-}
-
 .formLogin ::placeholder {
   color: #bfbbbb;
   font-size: 12px;
@@ -137,12 +128,12 @@ h2{
 .formLogin > div span.error {
   height: 10px;
   text-align: left;
-  margin-top: 5px;
+  margin-top: 3px;
   width: fit-content;
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: red;
   line-height: 1px;
-  padding: 9px 3px;
+  padding: 6px 2px;
   border-radius: 3px;
   background-color: rgba(255, 0, 0, 0.175);
   display: inline-block;
@@ -151,7 +142,8 @@ h2{
 .formLogin button[type="submit"] {
   display: block;
   text-align: center;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: bolder;
   width: 50%;
   border-radius: 25px;
   outline: 0;
@@ -167,17 +159,14 @@ h2{
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
 }
+.link
+{
+  color: #cf9409;
+}
 
 .formLogin button[type="submit"]:hover {
   background: #cf9409;
   cursor: pointer;
-}
-
-.terms {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 19px 0;
 }
 
 @media (max-width: 568px) {
