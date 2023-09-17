@@ -9,7 +9,7 @@ const cors = require("cors")
 
 
 const corsOptions = {
-    origin: 'http://localhost:3500', // Replace with the URL of your React app
+    origin: '*', // Replace with the URL of your React app
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // This allows cookies to be sent with the request (if needed)
     optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
