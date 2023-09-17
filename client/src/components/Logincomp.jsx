@@ -44,7 +44,7 @@ function Login() {
             navigate('/event');
         } else {
         
-            navigate('/event');
+            navigate('/userDash');
         }
     
       } else {

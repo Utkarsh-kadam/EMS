@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"; 
 import { ShowEventList } from "./components/showEvent";
 import { CreateEvent } from "./components/createEvent";
+import { UserDash } from "./components/userDash";
+
 import Login from "./components/Logincomp";
 import Registration from "./components/Registercomp";
 import "./App.scss";
@@ -12,6 +14,7 @@ function App() {
                 <Routes> 
                     <Route path="/" element={<Login/>} />
                     <Route exact path="/event" element={<ShowEventList/>} />
+                    <Route exact path="/userDash" element={<UserDash/>} />
                     <Route path="/create-event" element={<CreateEvent />} />
                     <Route path="/Register" element={<Registration />} />
 
