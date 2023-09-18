@@ -10,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [touched, setTouched] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -26,6 +27,7 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch('https://ems-api-63wi.onrender.com/login/login', {
@@ -55,6 +57,9 @@ function Login() {
     } catch (error) {
       console.error('Login error:', error);
     }
+    finally {
+      setIsLoading(false); // Set loading state back to false
+    }
   };
 
   return (
@@ -78,11 +83,16 @@ function Login() {
       </div>
 
       <div>
-        <button type="submit">Login</button>
-        <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h5>Don't have a account?</h5>  <Link className='link' to="/Register">Create account</Link>
-        </span>
-      </div>
+            {isLoading ? (
+              <button type="submit" disabled>Loading...</button>
+            ) : (
+              <button type="submit">Login</button>
+            )}
+            <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
+              <h5>Don't have an account?</h5>
+              <a style={{ color: "#dea114" }} href='/Register'>Create account</a>
+            </span>
+          </div>
     </form>
     <ToastContainer />
   </div>

@@ -18,7 +18,7 @@ body {
 a {
   text-decoration: none;
   font-weight: bold;
-  color: var(--main-color);
+  color: #dea114;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -159,10 +159,7 @@ h2{
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
 }
-.link
-{
-  color: #cf9409;
-}
+
 
 .formLogin button[type="submit"]:hover {
   background: #cf9409;

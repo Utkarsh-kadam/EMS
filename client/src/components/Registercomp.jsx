@@ -20,6 +20,7 @@ function Registration() {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setErrors(validate(data, "signUp"));
@@ -39,6 +40,7 @@ function Registration() {
 
   const handleRegistration = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     // Create a request object
     const requestOptions = {
@@ -62,6 +64,9 @@ function Registration() {
     } catch (error) {
       console.error("Error:", error);
       notify("An error occurred while registering");
+    }
+    finally {
+      setIsLoading(false); // Set loading state back to false
     }
   };
 
@@ -117,9 +122,15 @@ function Registration() {
       </div>
 
       <div>
-        <button type="submit">Create Account</button>
+
+       {isLoading ? (
+              <button type="submit" disabled>Loading...</button>
+            ) : (
+              <button type="submit">Register</button>
+            )}
         <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h5> Already have a account?</h5> <Link className="link" to="/">Login</Link>
+         <h5> Already have a account?</h5> 
+         <a style={{ color: "#dea114"}} href='/' >Login</a>
         </span>
       </div>
     </form>
