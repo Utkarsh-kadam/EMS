@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { validate } from "./validate";
 import styles from "./SignUp.module.css";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { notify } from "./toast";
+import { PulseLoader } from 'react-spinners';
+
 
 function Registration() {
   const [data, setData] = useState({
@@ -42,6 +44,7 @@ function Registration() {
     e.preventDefault();
     setIsLoading(true);
 
+
     // Create a request object
     const requestOptions = {
       method: "POST",
@@ -51,17 +54,19 @@ function Registration() {
 
     try {
       // Make a POST request to your server's register endpoint
+
       const response = await fetch("https://ems-api-63wi.onrender.com/register/register", requestOptions);
+
 
       if (response.status === 201) {
         const data = await response.json();
         navigate("/"); 
       } else {
-        const errorText = await response.text();
-        notify(errorText);
+        
+        notify("An error occurred while registering");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.log("Error:", error);
       notify("An error occurred while registering");
     }
     finally {
@@ -122,14 +127,18 @@ function Registration() {
 
       <div>
 
-       {isLoading ? (
-              <button type="submit" disabled>Loading...</button>
+      {isLoading ? (
+              <div className={styles.sweet_loading}>
+              <PulseLoader color="#dea114" loading={isLoading} size={25} />
+             </div>
+
             ) : (
               <button type="submit">Register</button>
             )}
         <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h5> Already have a account?</h5> 
-         <a style={{ color: "#dea114"}} href='/' >Login</a>
+
+         <h5> Already have a account?</h5> <Link className={styles.link} to="/">Login</Link>
+
         </span>
       </div>
     </form>

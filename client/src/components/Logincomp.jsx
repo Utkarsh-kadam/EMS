@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styles from "./SignUp.module.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
+import { PulseLoader } from 'react-spinners';
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -21,13 +23,17 @@ function Login() {
     }
   };
 
+
+
   const focusHandler = (event) => {
     setTouched({ ...touched, [event.target.name]: true });
   };
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    setIsLoading(true);
+
+    setIsLoading(true); 
+
 
     try {
       const response = await fetch('https://ems-api-63wi.onrender.com/login/login', {
@@ -83,16 +89,18 @@ function Login() {
       </div>
 
       <div>
-            {isLoading ? (
-              <button type="submit" disabled>Loading...</button>
+      {isLoading ? (
+              <div className={styles.sweet_loading}>
+              <PulseLoader color="#dea114" loading={isLoading} size={25} />
+             </div>
             ) : (
               <button type="submit">Login</button>
             )}
-            <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-              <h5>Don't have an account?</h5>
-              <a style={{ color: "#dea114" }} href='/Register'>Create account</a>
-            </span>
-          </div>
+        <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
+         <h5>Don't have a account?</h5>  <Link className={styles.link} to="/Register">Create account</Link>
+        </span>
+      </div>
+
     </form>
     <ToastContainer />
   </div>

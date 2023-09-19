@@ -24,7 +24,9 @@ export function CreateEvent() {
 
         console.log({ event });
         axios
+
             .post("https://ems-api-63wi.onrender.com/event", data)
+
             .then((res) => {
                 setData({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"" ,imageUrl: ""});
                 navigate('/event');
