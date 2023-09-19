@@ -139,6 +139,13 @@ h2{
   display: inline-block;
 }
 
+.sweet_loading {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+
+}
+
 .formLogin button[type="submit"] {
   display: block;
   text-align: center;

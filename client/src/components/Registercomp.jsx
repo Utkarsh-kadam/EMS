@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { validate } from "./validate";
 import styles from "./SignUp.module.css";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { notify } from "./toast";
+import { PulseLoader } from 'react-spinners';
+
 
 function Registration() {
   const [data, setData] = useState({
@@ -20,6 +22,7 @@ function Registration() {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setErrors(validate(data, "signUp"));
@@ -39,6 +42,7 @@ function Registration() {
 
   const handleRegistration = async (e) => {
     e.preventDefault();
+    setIsLoading(true); 
 
     // Create a request object
     const requestOptions = {
@@ -49,19 +53,22 @@ function Registration() {
 
     try {
       // Make a POST request to your server's register endpoint
-      const response = await fetch("http://localhost:3000//register/register", requestOptions);
+      const response = await fetch("http://localhost:3000/register/register", requestOptions);
 
       if (response.status === 201) {
        
         const data = await response.json();
         navigate("/"); 
       } else {
-        const errorText = await response.text();
-        notify(errorText);
+        
+        notify("An error occurred while registering");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.log("Error:", error);
       notify("An error occurred while registering");
+    }
+    finally {
+      setIsLoading(false); // Set loading state back to false
     }
   };
 
@@ -117,9 +124,15 @@ function Registration() {
       </div>
 
       <div>
-        <button type="submit">Create Account</button>
+      {isLoading ? (
+              <div className={styles.sweet_loading}>
+              <PulseLoader color="#dea114" loading={isLoading} size={25} />
+             </div>
+            ) : (
+              <button type="submit">Register</button>
+            )}
         <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h5> Already have a account?</h5> <Link className="link" to="/">Login</Link>
+         <h5> Already have a account?</h5> <Link className={styles.link} to="/">Login</Link>
         </span>
       </div>
     </form>

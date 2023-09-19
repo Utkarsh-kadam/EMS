@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styles from "./SignUp.module.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
+import { PulseLoader } from 'react-spinners';
+
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [touched, setTouched] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -20,12 +23,15 @@ function Login() {
     }
   };
 
+
+
   const focusHandler = (event) => {
     setTouched({ ...touched, [event.target.name]: true });
   };
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setIsLoading(true); 
 
     try {
       const response = await fetch('http://localhost:3000/login/login', {
@@ -55,6 +61,9 @@ function Login() {
     } catch (error) {
       console.error('Login error:', error);
     }
+    finally {
+      setIsLoading(false); // Set loading state back to false
+    }
   };
 
   return (
@@ -78,9 +87,15 @@ function Login() {
       </div>
 
       <div>
-        <button type="submit">Login</button>
+      {isLoading ? (
+              <div className={styles.sweet_loading}>
+              <PulseLoader color="#dea114" loading={isLoading} size={25} />
+             </div>
+            ) : (
+              <button type="submit">Login</button>
+            )}
         <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h5>Don't have a account?</h5>  <Link className='link' to="/Register">Create account</Link>
+         <h5>Don't have a account?</h5>  <Link className={styles.link} to="/Register">Create account</Link>
         </span>
       </div>
     </form>
