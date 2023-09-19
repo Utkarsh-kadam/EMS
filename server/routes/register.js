@@ -34,18 +34,12 @@ router.post("/register", (request, response) => {
           })
           // catch error if the new user wasn't added successfully to the database
           .catch((error) => {
-            response.status(500).send({
-              message: "Error creating user",
-              error,
-            });
+            response.status(500).send("Error creating user");
           });
       })
       // catch error if the password hash isn't successful
       .catch((e) => {
-        response.status(500).send({
-          message: "Password was not hashed successfully",
-          e,
-        });
+        response.status(500).send("Password was not hashed successfully");
       });
   });
 

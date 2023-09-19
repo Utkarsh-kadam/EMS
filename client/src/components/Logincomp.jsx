@@ -31,7 +31,9 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+
     setIsLoading(true); 
+
 
     try {
       const response = await fetch('https://ems-api-63wi.onrender.com/login/login', {
@@ -98,6 +100,7 @@ function Login() {
          <h5>Don't have a account?</h5>  <Link className={styles.link} to="/Register">Create account</Link>
         </span>
       </div>
+
     </form>
     <ToastContainer />
   </div>

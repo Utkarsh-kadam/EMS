@@ -49,10 +49,7 @@ router.post("/login", (request, response) => {
       })
       // catch error if email does not exist
       .catch((e) => {
-        response.status(404).send({
-          message: "Email not found",
-          e,
-        });
+        response.status(404).send("Email not found");
       });
   });
 

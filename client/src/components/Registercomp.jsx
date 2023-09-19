@@ -42,7 +42,8 @@ function Registration() {
 
   const handleRegistration = async (e) => {
     e.preventDefault();
-    setIsLoading(true); 
+    setIsLoading(true);
+
 
     // Create a request object
     const requestOptions = {
@@ -55,10 +56,9 @@ function Registration() {
       // Make a POST request to your server's register endpoint
 
       const response = await fetch("https://ems-api-63wi.onrender.com/register/register", requestOptions);
->>>>>>> parent of 5d5b5e75 (endpoint routes)
+
 
       if (response.status === 201) {
-       
         const data = await response.json();
         navigate("/"); 
       } else {
@@ -126,15 +126,19 @@ function Registration() {
       </div>
 
       <div>
+
       {isLoading ? (
               <div className={styles.sweet_loading}>
               <PulseLoader color="#dea114" loading={isLoading} size={25} />
              </div>
+
             ) : (
               <button type="submit">Register</button>
             )}
         <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
+
          <h5> Already have a account?</h5> <Link className={styles.link} to="/">Login</Link>
+
         </span>
       </div>
     </form>

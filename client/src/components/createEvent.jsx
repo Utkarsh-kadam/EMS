@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export function CreateEvent() {
     const [data, setData] = useState({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"",imageUrl: ""});
+    const navigate =useNavigate();
 
     function handleChange(e) {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -23,10 +24,12 @@ export function CreateEvent() {
 
         console.log({ event });
         axios
-            .post("https://ems-api-63wi.onrender.com", data)
+
+            .post("https://ems-api-63wi.onrender.com/event", data)
+
             .then((res) => {
                 setData({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"" ,imageUrl: ""});
-                console.log(res.data.message);
+                navigate('/event');
             })
             .catch((err) => {
                 console.log("Error couldn't create event");
