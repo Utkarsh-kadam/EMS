@@ -54,7 +54,6 @@ function Registration() {
       const response = await fetch("https://ems-api-63wi.onrender.com/register/register", requestOptions);
 
       if (response.status === 201) {
-       
         const data = await response.json();
         navigate("/"); 
       } else {
