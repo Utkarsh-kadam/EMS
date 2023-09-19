@@ -6,7 +6,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/event/${_id}`)
+            .get(`https://ems-api-63wi.onrender.com/event/${_id}`)
             .then((res) => {
                 setData(res.data);
             })
@@ -26,7 +26,7 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
         console.log({ _id }, { data });
 
         axios
-            .put(`http://localhost:3000/event/${_id}`, data)
+            .put(`https://ems-api-63wi.onrender.com/event/${_id}`, data)
             .then((res) => {
                 setData({name: "", description: "" ,organizer :"", date:"", time:"",venue:"",imageUrl: "" });
                 console.log(res.data.message);

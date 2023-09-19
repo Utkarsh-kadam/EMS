@@ -35,7 +35,7 @@ export function UserDash() {
     useEffect(
         function () {
             axios
-                .get("http://localhost:3000/event")
+                .get("https://ems-api-63wi.onrender.com/event")
                 .then((res) => {
                     setEvent(res.data);
                 })

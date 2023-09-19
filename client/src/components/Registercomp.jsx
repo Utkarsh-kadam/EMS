@@ -53,7 +53,9 @@ function Registration() {
 
     try {
       // Make a POST request to your server's register endpoint
-      const response = await fetch("http://localhost:3000/register/register", requestOptions);
+
+      const response = await fetch("https://ems-api-63wi.onrender.com/register/register", requestOptions);
+>>>>>>> parent of 5d5b5e75 (endpoint routes)
 
       if (response.status === 201) {
        
