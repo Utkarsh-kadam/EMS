@@ -23,7 +23,7 @@ export function CreateEvent() {
 
         console.log({ event });
         axios
-            .post("http://localhost:3000/event", data)
+            .post("https://ems-api-63wi.onrender.com", data)
             .then((res) => {
                 setData({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"" ,imageUrl: ""});
                 console.log(res.data.message);
