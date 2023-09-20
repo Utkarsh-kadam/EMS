@@ -31,13 +31,14 @@ const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
 const eventRoute = require("./routes/event")
 const eventregister = require("./routes/eventregister");
-
+const userEvent = require("./routes/userEvents");
 
 // Mount the routes on specific paths
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 app.use("/event",eventRoute);
 app.use("/eventregister", eventregister);
+app.use("/user", userEvent);
 
 
 
