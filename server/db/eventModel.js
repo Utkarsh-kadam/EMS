@@ -32,7 +32,11 @@ const EventSchema = new mongoose.Schema({
   imageUrl: {
         type: String,
         required: true,
-    }
+    },
+    registeredUsers: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'userModel', // Reference to the User model
+    }],
 
       
   })

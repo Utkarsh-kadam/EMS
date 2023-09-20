@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const dbConnect = require("./db/dbConnect");
 const path = require("path");
 const cors = require("cors")
+const authMiddleware = require("./routes/auth");
+
 
 
 const corsOptions = {
@@ -28,14 +30,14 @@ dbConnect();
 const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
 const eventRoute = require("./routes/event")
+const eventregister = require("./routes/eventregister");
+
 
 // Mount the routes on specific paths
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 app.use("/event",eventRoute);
-
-
-
+app.use("/eventregister", eventregister);
 
 
 

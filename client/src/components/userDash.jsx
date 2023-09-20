@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "./toast";
+import globalState, {userId } from "./globalState"; 
+
 
 
 function EventCard({ data,handleEventRegister }) {
@@ -11,19 +16,22 @@ function EventCard({ data,handleEventRegister }) {
             <div className="image-container">
                 <img src={imageUrl} alt={name} className="event-image" />
             </div>
-
                 <h3 className="event-title">{name}</h3>
                 <p className="event-info"><strong>{date}</strong></p>
                 <p className="event-info"><strong>Venue:</strong> {venue}</p>
             </div>
             <div className="button-container">
            
-                <button className="button" name={_id} >
+            <button
+          className="button"
+          onClick={() => handleEventRegister(_id)}>
                    <strong>Register</strong>
                 </button>
             </div>
         </li>
     );
+
+   
 }
 
 export function UserDash() {
@@ -31,11 +39,12 @@ export function UserDash() {
     const [open, setOpen] = useState(false); 
     const [id, setId] = useState(""); 
     const [update, setUpdate] = useState(false); 
+    
 
     useEffect(
         function () {
             axios
-                .get("https://ems-api-63wi.onrender.com/event")
+                .get("http://localhost:3000/event")
                 .then((res) => {
                     setEvent(res.data);
                 })
@@ -56,22 +65,50 @@ export function UserDash() {
         setOpen(false);
     }
 
+   async function handleEventRegister(eventId) {
+    const userId = globalState.userId; 
+        try {
+          const response = await fetch("http://localhost:3000/eventregister", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId, eventId }),
+          });
+
+          if (response.status === 200) {
+
+            notify("Registered Successfully!","success");
+            setUpdate(!update);
+          } else if(response.status === 400){
+            notify("Already Registered!");
+          }
+          else {
+            // Handle registration error
+            notify("Registration Failed!");
+            const errorText = await response.text();
+            console.error("Error registering for the event:", errorText);
+          }
+        } catch (error) {
+          console.error("Error registering for the event:", error);
+        }
+      
+      }
+      
+
     return (
-        <section className="container">
-            <h1 className="admin-title">User Portal</h1>
-        
-            <section className="contents">
-                <h3 className="events-title large-font">Events</h3>
-                <ul className="list-container">
-                    {event.map((data) => (
-                        <EventCard
-                            data={data}
-                            handleEdit={handleEdit}
-                        />
-                    ))}
-                </ul>
-            </section>
-        
-        </section>
+     <section className="container">
+      <h1 className="admin-title">User Portal</h1>
+      <ToastContainer />
+
+      <section className="contents">
+        <h3 className="events-title large-font">Events</h3>
+        <ul className="list-container">
+          {event.map((data) => (
+            <EventCard data={data} handleEventRegister={handleEventRegister} />
+          ))}
+        </ul>
+      </section>
+    </section>
     );
 }
