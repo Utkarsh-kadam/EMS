@@ -36,6 +36,9 @@ a:hover {
   border-radius: 11px;
   min-width: 500px;
 }
+.link{
+  color: #dea114
+}
 
 .container {
   display: flex;
