@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { PulseLoader } from 'react-spinners';
-
+import globalState from './globalState';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -36,7 +36,7 @@ function Login() {
 
 
     try {
-      const response = await fetch('https://ems-api-63wi.onrender.com/login/login', {
+      const response = await fetch('http://localhost:3000/login/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,6 +47,9 @@ function Login() {
       if (response.status === 200) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
+        globalState.userId= data.userId;
+      
+
         if (data.role === 'admin') {
           
             navigate('/event');
