@@ -44,7 +44,7 @@ export function UserDash() {
     useEffect(
         function () {
             axios
-                .get("http://localhost:3000/event")
+                .get("https://ems-api-63wi.onrender.com/event")
                 .then((res) => {
                     setEvent(res.data);
                 })
@@ -68,7 +68,7 @@ export function UserDash() {
    async function handleEventRegister(eventId) {
     const userId = globalState.userId; 
         try {
-          const response = await fetch("http://localhost:3000/eventregister", {
+          const response = await fetch("https://ems-api-63wi.onrender.com/eventregister", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

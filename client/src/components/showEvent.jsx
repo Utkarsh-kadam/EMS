@@ -43,7 +43,7 @@ export function ShowEventList() {
     useEffect(
         function () {
             axios
-                .get("http://localhost:3000/event")
+                .get("https://ems-api-63wi.onrender.com/event")
                 .then((res) => {
                     setEvent(res.data);
                 })
@@ -67,7 +67,7 @@ export function ShowEventList() {
 
     function handleDelete(e) { 
         console.log(e.target.name)
-        axios.delete(`http://localhost:3000/event/${e.target.name}`);
+        axios.delete(`https://ems-api-63wi.onrender.com/event/${e.target.name}`);
     
         setEvent((data) => {
             return data.filter((event) => event._id !== e.target.name);
