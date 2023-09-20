@@ -214,6 +214,11 @@ a {
         background-color: hsl(220, 13%, 28%);
         padding: 1rem 4rem 4rem;
         border-radius: 0.5rem;
+        width: 50vw;
+       
+        .label{
+            align-self: center;
+        }
 
         .close {
             grid-area: close;
@@ -237,10 +242,13 @@ a {
           padding: 1rem;
           overflow-x: hidden; 
         }
+        .input{
+            width: 70vw;
+        }
       
         .update-contents {
-          padding: 1rem 2rem 2rem;
-          max-width: 100vw; 
+          padding: 1rem 1rem 1rem;
+          width: 80vw; 
         }
       
         .close {
