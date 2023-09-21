@@ -39,13 +39,14 @@ function UserRegistered() {
   return (
     <section className="container">
       <h1 className="admin-title">User Portal</h1>
-      <p> Welcome ${localStorage.getItem("username")}</p>
+      
       <Link to="/userDash" className="button-new">
                 <button className="button">
                    <strong>All Events</strong> 
                     </button>
             </Link>
       <section className="contents">
+      <p> Welcome, {localStorage.getItem("username")} !</p>
         <h3 className="events-title">Registered Events</h3>
         <ul className="list-container">
           {event.map((data) => (

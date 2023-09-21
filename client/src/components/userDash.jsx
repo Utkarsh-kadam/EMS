@@ -97,10 +97,11 @@ export function UserDash() {
     return (
      <section className="container">
       <h1 className="admin-title">User Portal</h1>
-      <p> Welcome ${localStorage.getItem("username")}</p>
+     
       <ToastContainer />
 
       <section className="contents">
+      <p> Welcome, {localStorage.getItem("username")} !</p>
         <h3 className="events-title large-font">Events</h3>
         <ul className="list-container">
           {event.map((data) => (
