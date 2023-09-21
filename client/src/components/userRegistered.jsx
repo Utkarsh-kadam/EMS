@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import globalState, { userId } from "./globalState";
 
 function EventCard({ data }) {
-  const { _id, name, date, venue, imageUrl } = data;
+  const { _id, name,date,venue,imageUrl } = data;
   return (
     <li key={_id} className="event-card">
       <div className="text-container">
@@ -17,16 +17,13 @@ function EventCard({ data }) {
         <p className="event-info"><strong>{date}</strong></p>
         <p className="event-info"><strong>Venue:</strong> {venue}</p>
       </div>
-      <div className="button-container">
-        {/* Add any buttons or actions you need here */}
-      </div>
     </li>
   );
 }
 
 function UserRegistered() {
   const [event, setEvent] = useState([]);
-  const userId = "650705ef63c93ff57cbeadc6";
+  const userId = globalState.userId;
 
   useEffect(() => {
     axios
@@ -43,9 +40,13 @@ function UserRegistered() {
   return (
     <section className="container">
       <h1 className="admin-title">User Portal</h1>
-
+      <Link to="/userDash" className="button-new">
+                <button className="button">
+                   <strong>All Events</strong> 
+                    </button>
+            </Link>
       <section className="contents">
-        <h3 className="events-title large-font">Events</h3>
+        <h3 className="events-title">Registered Events</h3>
         <ul className="list-container">
           {event.map((data) => (
             <EventCard key={data._id} data={data} />

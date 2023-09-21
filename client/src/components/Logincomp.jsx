@@ -55,7 +55,7 @@ function Login() {
             navigate('/event');
         } else {
         
-            navigate('/userDash');
+            navigate('/userRegistered');
         }
     
       } else {

@@ -28,6 +28,7 @@ router.get("/:userId", async (req, res) => {
           name: eventDetails.name,
           date: eventDetails.date,
           venue: eventDetails.venue,
+          imageUrl: eventDetails.imageUrl
         });
       }
     }
