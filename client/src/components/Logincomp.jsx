@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
 import { PulseLoader } from 'react-spinners';
-import globalState from './globalState';
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -47,7 +47,9 @@ function Login() {
       if (response.status === 200) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
-        globalState.userId= data.userId;
+        localStorage.setItem("userId", data.userId);
+        localStorage.setItem("username", data.username);
+
       
 
         if (data.role === 'admin') {

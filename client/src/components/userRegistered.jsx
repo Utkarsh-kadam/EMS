@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import globalState, { userId } from "./globalState";
 
 function EventCard({ data }) {
   const { _id, name,date,venue,imageUrl } = data;
@@ -23,7 +22,7 @@ function EventCard({ data }) {
 
 function UserRegistered() {
   const [event, setEvent] = useState([]);
-  const userId = globalState.userId;
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     axios
@@ -40,6 +39,7 @@ function UserRegistered() {
   return (
     <section className="container">
       <h1 className="admin-title">User Portal</h1>
+      <p> Welcome ${localStorage.getItem("username")}</p>
       <Link to="/userDash" className="button-new">
                 <button className="button">
                    <strong>All Events</strong> 

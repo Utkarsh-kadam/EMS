@@ -38,6 +38,7 @@ router.post("/login", (request, response) => {
             response.status(200).send({
               message: "Login Successful",
               userId: user._id,
+              username: user.username,
               role:role,
               token,
             });

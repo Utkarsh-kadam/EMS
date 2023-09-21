@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
-import globalState, {userId } from "./globalState"; 
-
 
 
 function EventCard({ data,handleEventRegister }) {
@@ -66,7 +64,7 @@ export function UserDash() {
     }
 
    async function handleEventRegister(eventId) {
-    const userId = globalState.userId; 
+    const userId = localStorage.getItem("userId");
         try {
           const response = await fetch("https://ems-api-63wi.onrender.com/eventregister", {
             method: "POST",
@@ -99,6 +97,7 @@ export function UserDash() {
     return (
      <section className="container">
       <h1 className="admin-title">User Portal</h1>
+      <p> Welcome ${localStorage.getItem("username")}</p>
       <ToastContainer />
 
       <section className="contents">
