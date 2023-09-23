@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { notify } from "./toast";
 
 export function UpdateEvent({ _id, handleClose, handleUpdate }) {
     const [data, setData] = useState({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"" ,imageUrl: ""});
@@ -30,8 +31,8 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
         axios
             .put(`https://ems-api-63wi.onrender.com/event/${_id}`, data)
             .then((res) => {
+                notify("Updated Successfully !","success");
                 setData({name: "", description: "" ,organizer :"", date:"", time:"",venue:"",imageUrl: "" });
-                navigate('/event');
             })
             .catch((err) => {
                 console.log("Failed to update todo");

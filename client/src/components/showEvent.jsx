@@ -23,10 +23,10 @@ function EventCard({ data,handleEdit, handleDelete }) {
                 <p className="event-info"><strong>Count:</strong> {registeredUsers.length}</p>
             </div>
             <div className="button-container">
-            <button className="button" name={_id} onClick={handleEdit}> 
+            <button className="button" data-id={_id} onClick={handleEdit}> 
                     <strong>Edit</strong> 
                 </button>
-                <button className="button" name={_id} onClick={handleDelete}>
+                <button className="button" data-id={_id} onClick={handleDelete}>
                    <strong>Delete</strong>
                 </button>
             </div>
@@ -55,7 +55,7 @@ export function ShowEventList() {
     );
 
     function handleEdit(e) {
-        setId(e.target.name); 
+        setId(e.currentTarget.getAttribute("data-id")); 
         console.log(e.target.name);
         setOpen(true);
     }
@@ -66,12 +66,18 @@ export function ShowEventList() {
     }
 
     function handleDelete(e) { 
-        console.log(e.target.name)
-        axios.delete(`https://ems-api-63wi.onrender.com/event/${e.target.name}`);
-    
-        setEvent((data) => {
-            return data.filter((event) => event._id !== e.target.name);
+        axios.delete(`https://ems-api-63wi.onrender.com/event/${e.currentTarget.getAttribute("data-id")}`)
+        .then(() => {
+           notify("Event Deleted !","success")
+            setEvent((data) => {
+                return data.filter((event) => event._id !== e.target.name);
+            });
+        })
+        .catch((err) => {
+            notify("Failed to delete event");
+            console.log(err.message);
         });
+    
     }
 
     function handleClose() { 
@@ -80,8 +86,10 @@ export function ShowEventList() {
     }
 
     return (
+        <div>
         <section className="container">
             <h1 className="admin-title">Admin Portal</h1>
+            
             <Link to="/create-event" className="button-new">
                 <button className="button">
                    <strong>New</strong> 
@@ -99,6 +107,7 @@ export function ShowEventList() {
                     ))}
                 </ul>
             </section>
+            
            
             {open ? (
                 <section className="update-container">
@@ -118,5 +127,8 @@ export function ShowEventList() {
                 null
             )}
         </section>
+        <ToastContainer/>
+        </div>
+       
     );
 }
