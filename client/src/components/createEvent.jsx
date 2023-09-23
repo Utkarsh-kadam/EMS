@@ -136,7 +136,18 @@ export function CreateEvent() {
                         className="input"
                     />
                     </div>
-                    
+                    <div className="form-group">
+                    <label className="label" htmlFor="eventpassword">
+                    Event Password
+                    </label>
+                    <input
+                        type="text"
+                        name="eventpassword"
+                        onChange={handleChange}
+                        className="input"
+                        value={data.eventpassword}
+                    />
+                    </div>
                     <button type="submit" className="button">
                         Create Event
                     </button>

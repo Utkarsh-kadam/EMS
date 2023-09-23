@@ -124,6 +124,17 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
                         className="input"
                         value={data.venue}
                     />
+
+                    <label className="label" htmlFor="eventpassword">
+                    Event Password
+                    </label>
+                    <input
+                        type="text"
+                        name="eventpassword"
+                        onChange={handleChange}
+                        className="input"
+                        value={data.eventpassword}
+                    />
             <button type="submit" className="button">
                 Update
             </button>

@@ -38,8 +38,10 @@ const EventSchema = new mongoose.Schema({
       ref: 'userModel', // Reference to the User model
     }],
 
-      
+    eventpassword: {
+      type: String,
+    },
+
   })
   module.exports = mongoose.model.Events || mongoose.model("Events", EventSchema);
 
-  
