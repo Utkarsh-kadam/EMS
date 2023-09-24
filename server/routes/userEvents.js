@@ -4,6 +4,8 @@ const router = express.Router();
 const Registration = require("../db/eventRegistrationModel");
 const Event = require("../db/eventModel");
 const Attendance =  require("../db/attendanceModal");
+const Feedback = require("../db/feedbackModel");
+
 
 // Endpoint to get registered events for a user
 router.get("/:userId", async (req, res) => {
@@ -71,5 +73,40 @@ router.post("/attendance", async (req, res) => {
     res.status(500).json({ message: "Failed to record attendance", error });
   }
 });
+
+
+// Endpoint to submit feedback for an event
+router.post("/feedback", async (req, res) => {
+  const { userId, eventId, rating, comment, questions } = req.body;
+  console.log(req.body); 
+
+  try {
+    // Check if a feedback entry already exists for the user and event
+    const existingFeedback = await Feedback.findOne({ userId, eventId });
+
+    if (existingFeedback) {
+      return res.status(400).json({ message: "Feedback already submitted for this event" });
+    }
+
+    // Create a new feedback object
+    const feedback = new Feedback({
+      userId,
+      eventId,
+      rating,
+      comment,
+      questions,
+    
+    });
+
+    // Save the feedback to the database
+    await feedback.save();
+
+    res.status(200).json({ message: "Feedback submitted successfully" });
+  } catch (error) {
+    console.error("Error submitting feedback:", error);
+    res.status(500).json({ message: "Failed to submit feedback", error });
+  }
+});
+
 
 module.exports = router;
