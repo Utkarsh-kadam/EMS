@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,16 +38,11 @@ function UserRegistered() {
   }, [userId]);
 
   return (
-    <section className="container">
-      <h1 className="admin-title">User Portal</h1>
-      
-      <Link to="/userDash" className="button-new">
-                <button className="button">
-                   <strong>All Events</strong> 
-                    </button>
-            </Link>
+    <div>
+      <Navbar isAdmin={false} />
+      <section className="container">
       <section className="contents">
-      <p> Welcome, {localStorage.getItem("username")} !</p>
+      
         <h3 className="events-title">Registered Events</h3>
         <ul className="list-container">
           {event.map((data) => (
@@ -55,6 +51,9 @@ function UserRegistered() {
         </ul>
       </section>
     </section>
+
+    </div>
+    
   );
 }
 

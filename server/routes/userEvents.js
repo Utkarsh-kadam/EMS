@@ -41,7 +41,7 @@ router.get("/:userId", async (req, res) => {
 });
 
 // Endpoint to mark attendance for a user
-router.post("/feedback", async (req, res) => {
+router.post("/attendance", async (req, res) => {
   const { userId, eventId } = req.body;
   console.log(userId,eventId);
 

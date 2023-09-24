@@ -5,6 +5,7 @@ import { UpdateEvent } from "./updateEvent";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
+import Navbar from "./Navbar";
 
 
 function EventCard({ data,handleEdit, handleDelete }) {
@@ -87,16 +88,13 @@ export function ShowEventList() {
 
     return (
         <div>
+            <Navbar isAdmin={true}/>
+
         <section className="container">
-            <h1 className="admin-title">Admin Portal</h1>
-            
-            <Link to="/create-event" className="button-new">
-                <button className="button">
-                   <strong>New</strong> 
-                    </button>
-            </Link>
+            <h4 className="admin-title">Admin Portal</h4>
+        
             <section className="contents">
-                <h3 className="events-title large-font">Events</h3>
+                <h3 className="events-title">All Events</h3>
                 <ul className="list-container">
                     {event.map((data) => (
                         <EventCard

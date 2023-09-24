@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "./toast";
+import Navbar from "./Navbar";
 
 
 function EventCard({ data,handleEventRegister }) {
@@ -95,9 +96,9 @@ export function UserDash() {
       
 
     return (
-     <section className="container">
-      <h1 className="admin-title">User Portal</h1>
-     
+      <div>
+        <Navbar isAdmin={false}/>
+        <section className="container">
       <ToastContainer />
 
       <section className="contents">
@@ -110,5 +111,8 @@ export function UserDash() {
         </ul>
       </section>
     </section>
+
+      </div>
+     
     );
 }
