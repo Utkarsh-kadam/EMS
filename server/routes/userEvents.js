@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Registration = require("../db/eventRegistrationModel");
 const Event = require("../db/eventModel");
-const Attendance =  require("../db/attendanceModal");
+const Attendance =  require("../db/attendanceModel");
 const Feedback = require("../db/feedbackModel");
 
 

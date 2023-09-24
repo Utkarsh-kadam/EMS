@@ -25,7 +25,6 @@ a {
 
 .button-back {
     margin-bottom: 2rem;
-
 }
 
 .form-container .input {
@@ -36,6 +35,9 @@ a {
     font-size: 1.2rem; 
     padding: 0.5rem 1rem; 
     width: auto; 
+    grid-area: button-new;
+    display: flex;
+    justify-self: end;
    
     @media screen and (max-width: 768px) {
         font-size: 1rem;
@@ -96,16 +98,13 @@ a {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 8rem 1.6fr;
     gap: 0px 0px;
+    width: 100vw;
     grid-template-areas:
         "button-back . button-new"
         "contents contents contents";
 }
 
-.button-new {
-    grid-area: button-new;
-    display: flex;
-    justify-self: end;
-}
+
 
 .contents {
     grid-area: contents;
@@ -269,16 +268,12 @@ a {
 
 .admin-title {
     text-align: center;
-    margin-bottom: 0.8rem;
 }
 
 .events-title {
     text-align: center;
     margin-bottom: 0.8rem;
 
-}
-.large-font {
-    font-size: 4rem;
 }
 
 .form-group {
@@ -345,7 +340,7 @@ a {
   
   .navigation-menu li {
     list-style-type: none;
-    margin: 0 1rem;
+    margin: 0 2rem;
   }
   
   .navigation-menu li a {
