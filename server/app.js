@@ -32,13 +32,15 @@ const registerRoute = require("./routes/register");
 const eventRoute = require("./routes/event")
 const eventregister = require("./routes/eventregister");
 const userEvent = require("./routes/userEvents");
+const admin = require("./routes/admin");
 
 // Mount the routes on specific paths
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
-app.use("/event",eventRoute);
-app.use("/eventregister", eventregister);
-app.use("/user", userEvent);
+app.use("/event",eventRoute); // route for event operation
+app.use("/eventregister", eventregister); // route to register a user for event
+app.use("/user", userEvent); //route for user operations
+app.use("/admin",admin); //route for admin operations
 
 
 
