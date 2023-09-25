@@ -117,6 +117,7 @@ a {
     }
 }
 
+/*--------------------------------------Event Cards----------------------------------*/
 .list-container {
     display: flex;
     flex-direction: column;
@@ -158,6 +159,7 @@ a {
             }
         }
     }
+
     
     @media only screen and (min-width: 768px) {
         display: grid;
@@ -172,6 +174,8 @@ a {
         width: 120rem;
     }
 }
+
+ /*--------------------------------------Event Cards----------------------------------*/
 
 .form-container {
     display: flex;
@@ -408,4 +412,33 @@ a {
 
 /* -------------------------------------navbar---------------------------------*/
 
+
+/* -------------------------------------table---------------------------------*/
+/* Style for the table */
+table {
+    border-collapse: collapse;
+    width: 70%;
+  }
   
+  /* Style for table header cells */
+  th {
+    background-color: #559c95;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Style for alternating rows */
+  tr:nth-child(even) {
+    background-color: #645b5b;
+  }
+  
+  /* Style for table data cells */
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.8 rem;
+    text-align: center;
+  }
+  
+  /* -------------------------------------table---------------------------------*/

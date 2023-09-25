@@ -44,14 +44,12 @@ export default function Navbar({ isAdmin }) {
                 <Link to="/create-event">New Event</Link>
               </li>
               <li>
-                <Link to="">All Events</Link>
+                <Link to="/event">All Events</Link>
               </li>
               <li>
-                <Link to="">Attendance Reports</Link>
+                <Link to="/reports">Reports</Link>
               </li>
-              <li>
-                <Link to="">Feedback Reports</Link>
-              </li>
+             
               </ul>
             </>
           ) : (
