@@ -5,7 +5,7 @@ import { UserDash } from "./components/userDash";
 import  UserRegistered  from "./components/userRegistered";
 import Login from "./components/Logincomp";
 import Registration from "./components/Registercomp";
-import Records from "./components/records"
+import Reports from "./components/reports"
 import "./App.scss";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
                     <Route exact path="/userRegistered" element={<UserRegistered/>} /> //show registred events only currently user dashboard
                     <Route path="/create-event" element={<CreateEvent />} />
                     <Route path="/Register" element={<Registration />} />
-                    <Route path="/reports" element={<Records />} />
+                    <Route path="/reports" element={<Reports />} /> //event records for admin dash
 
 
 
