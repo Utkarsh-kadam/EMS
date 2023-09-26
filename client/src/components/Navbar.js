@@ -8,6 +8,7 @@ export default function Navbar({ isAdmin }) {
 
   return (
     <nav className="navigation">
+        <img src="/ems.png" alt="EMS" className="logo" />
       <a href="" className="brand-name">
         EMS
       </a>

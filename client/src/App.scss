@@ -63,9 +63,31 @@ a {
     margin-right: auto;
     width: fit-content;
     align-self: center;
+   
+}
+.button-table{
+  display: block; 
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #559c95;
+  color: white;
+  font-size: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  align-self: center;
+
+  @media (max-width: 768px) {
+   font-size: 0.8rem;
+   padding: 0.5rem 0.5rem;
+
+  }
+ 
 }
 
-.button:hover {
+.button:hover,.button-table:hover {
     background-color: #3a7f78;
 }
 
@@ -315,20 +337,27 @@ a {
 }
 /* -------------------------------------navbar---------------------------------*/
 .navigation {
-    position: relative;
+    position: fixed;
     display: flex;
+    z-index: 99999;
     align-items: center;
     height: 60px;
     width: 100%;
     padding: 0.5rem 0rem;
-    background-color: #fff;
-    color: black;
+    background-color: #000000;
+    color: white;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+  }
+
+  .logo{
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
   }
   
   .brand-name {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 2.5rem;
     margin-left: 1rem;
   }
@@ -351,6 +380,7 @@ a {
     text-decoration: none;
     display: block;
     width: 100%;
+    color: white;
   }
   
   .hamburger {
@@ -396,7 +426,7 @@ a {
     }
   
     .navigation-menu li a {
-      color: black;
+      color: white;
       width: 100%;
       padding: 1.5rem 0;
     }
@@ -408,17 +438,18 @@ a {
     .navigation-menu.expanded ul {
       display: block;
     }
+    
   }
 
 /* -------------------------------------navbar---------------------------------*/
 
 
 /* -------------------------------------table---------------------------------*/
-/* Style for the table */
+
 table {
     border-collapse: collapse;
-    width: 70%;
-  }
+    width: 70vw;
+
   
   /* Style for table header cells */
   th {
@@ -440,5 +471,16 @@ table {
     font-size: 0.8 rem;
     text-align: center;
   }
+  @media (max-width: 768px) {
+    /* Adjust table font size and padding for smaller screens */
+   width: 90vw;
+    td,
+    th {
+      padding: 5px;
+      font-size: 16px;
+    }
+  }
+
+}
   
   /* -------------------------------------table---------------------------------*/

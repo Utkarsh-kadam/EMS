@@ -106,14 +106,14 @@ function Reports() {
                     <td>{event.date}</td>
                     <td>
                       <button
-                        className="button"
+                        className="button-table"
                         onClick={() => handleAttendanceClick(event._id, event.name)}
                       >
                         Attendance
                       </button>
                     </td>
                     <td>
-                      <button className="button">Feedback</button>
+                      <button className="button-table">Feedback</button>
                     </td>
                   </tr>
                 ))}
