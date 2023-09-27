@@ -44,8 +44,7 @@ router.get("/:userId", async (req, res) => {
 
 // Endpoint to mark attendance for a user
 router.post("/attendance", async (req, res) => {
-  const { userId, eventId } = req.body;
-  console.log(userId,eventId);
+  const { userId, eventId ,attendancePassword} = req.body;
 
   try {
     // Check if the user is already registered for the event
@@ -60,6 +59,13 @@ router.post("/attendance", async (req, res) => {
 
     if (existingAttendance) {
       return res.status(400).json({ message: "Attendance already recorded for this event" });
+    }
+
+    const response = await fetch(`https://ems-api-63wi.onrender.com/event/${eventId}`);
+    const data = await response.json();
+
+    if (data.eventpassword !== attendancePassword) {
+      return res.status(401).json({ message: "Attendance password is incorrect" });
     }
 
     // Create a new attendance record
