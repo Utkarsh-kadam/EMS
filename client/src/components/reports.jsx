@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { VscFeedback } from "react-icons/vsc";
+import { MdGroups } from "react-icons/md";
 
 function Reports() {
   const [events, setEvent] = useState([]);
@@ -94,8 +96,8 @@ function Reports() {
                   <th> </th>
                   <th>Name</th>
                   <th>Date</th>
-                  <th>Attendance Reports</th>
-                  <th>Feedback Reports</th>
+                  <th> </th>
+                  <th> </th>
                 </tr>
               </thead>
               <tbody>
@@ -107,13 +109,15 @@ function Reports() {
                     <td>
                       <button
                         className="button-table"
-                        onClick={() => handleAttendanceClick(event._id, event.name)}
-                      >
-                        Attendance
+                        onClick={() => handleAttendanceClick(event._id, event.name)}>
+                          
+                            < MdGroups className='table-icon'  />
                       </button>
                     </td>
                     <td>
-                      <button className="button-table">Feedback</button>
+                      <button className="button-table">
+                        <VscFeedback className='table-icon' />
+                        </button>
                     </td>
                   </tr>
                 ))}

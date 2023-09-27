@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
+import {  DateTimePicker } from "react-rainbow-components";
+
 
 export function CreateEvent() {
-    const [data, setData] = useState({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"",imageUrl: ""});
+    const [data, setData] = useState({ name: "", description: "" ,organizer :"", startDate: "",
+    endDate: "",venue:"",imageUrl: ""});
     const navigate =useNavigate();
+  
 
     function handleChange(e) {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -12,28 +16,35 @@ export function CreateEvent() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const formattedStartDate = data.startDate.toISOString();
+        const formattedEndDate = data.endDate.toISOString();
+
 
         const event = {
             name: data.name,
             description: data.description,
             organizer :data.organizer,
-            date : data.date,
-            time : data.time,
+            startDate: formattedStartDate,
+            endDate: formattedEndDate,
             venue : data.venue,
+            imageUrl: data.imageUrl
         };
 
         console.log({ event });
         axios
 
-            .post("https://ems-api-63wi.onrender.com/event", data)
+            .post("https://ems-api-63wi.onrender.com/event", event)
 
             .then((res) => {
-                setData({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"" ,imageUrl: ""});
+                setData({ name: "", description: "" ,organizer :"",  startDate: "",
+                endDate: "",venue:"" ,imageUrl: ""});
                 navigate('/event');
             })
             .catch((err) => {
                 console.log("Error couldn't create event");
                 console.log(err.message);
+                console.log(data.startDate);
+                console.log(formattedStartDate);
             });
     }
 
@@ -100,30 +111,34 @@ export function CreateEvent() {
                     </div>
 
                     <div className="form-group">
-                    <label className="label" htmlFor="date">
-                    Date
-                    </label>
-                    <input
-                        type="text"
-                        name="date"
-                        value={data.date}
-                        onChange={handleChange}
-                        className="input"
-                    />
+                            <label className="label" htmlFor="startDate">
+                            Start Date
+                            </label>
+
+                            <DateTimePicker
+                                    id="datePicker-1"
+                                    value={data.startDate}
+                                    onChange={(date) =>setData((data) => ({ ...data, startDate: date }))}
+                                    formatStyle="large"
+                                    className="input"
+                                    />
+            
                     </div>
 
-                    <div className="form-group">
-                    <label className="label" htmlFor="time">
-                    Time
+                <div className="form-group">
+                    <label className="label" htmlFor="endDate">
+                    End Date
                     </label>
-                    <input
-                        type="text"
-                        name="time"
-                        value={data.time}
-                        onChange={handleChange}
-                        className="input"
-                    />
-                    </div>
+                                 <DateTimePicker
+                                    id="datePicker-1"
+                                    value={data.endDate}
+                                    onChange={(date) =>setData((data) => ({ ...data, endDate: date }))}
+                                    formatStyle="large"
+                                    className="input"
+                                    />
+           
+                </div>
+
                     <div className="form-group">
                     <label className="label" htmlFor="venue">
                     Venue

@@ -80,12 +80,24 @@ a {
   align-self: center;
 
   @media (max-width: 768px) {
-   font-size: 0.8rem;
-   padding: 0.5rem 0.5rem;
-
+   font-size: 0.5rem;
+   padding: 0.5rem 1rem;
+   .table-icon{
+    font-size: 20px;
+   }
   }
  
 }
+.table-icon{
+  font-size: 30px;
+}
+@media (max-width: 400px) {
+ 
+  .table-icon{
+   font-size: 20px;
+  }
+ }
+
 
 .button:hover,.button-table:hover {
     background-color: #3a7f78;
@@ -189,6 +201,7 @@ a {
         gap: 2rem;
         width: 60rem;
         margin: 0 auto;
+
     }
 
     @media only screen and (min-width: 992px) {

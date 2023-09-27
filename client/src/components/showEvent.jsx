@@ -8,8 +8,13 @@ import { notify } from "./toast";
 import Navbar from "./Navbar";
 
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleString();;
+  }
+
 function EventCard({ data,handleEdit, handleDelete }) {
-    const { _id, name,date,venue,imageUrl,registeredUsers } = data;
+    const { _id, name,startDate,venue,imageUrl,registeredUsers } = data;
     return (
         <li key={_id} className="event-card">
         <div className="text-container">
@@ -19,7 +24,7 @@ function EventCard({ data,handleEdit, handleDelete }) {
            
                 <h3 className="event-title">{name}</h3>
                 {/* <p className="event-description">{description}</p> */}
-                <p className="event-info"><strong>{date}</strong></p>
+                <p className="event-info"><strong>{formatDate(startDate)}</strong></p>
                 <p className="event-info"><strong>Venue:</strong> {venue}</p>
                 <p className="event-info"><strong>Count:</strong> {registeredUsers.length}</p>
             </div>

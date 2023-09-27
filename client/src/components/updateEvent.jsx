@@ -1,11 +1,11 @@
 import { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { notify } from "./toast";
+import {  DateTimePicker } from "react-rainbow-components";
+
 
 export function UpdateEvent({ _id, handleClose, handleUpdate }) {
-    const [data, setData] = useState({ name: "", description: "" ,organizer :"", date:"", time:"",venue:"" ,imageUrl: ""});
-    const navigate = useNavigate();
+    const [data, setData] = useState({ name: "", description: "" ,organizer :"", startDate:"",endDate:"", time:"",venue:"" ,imageUrl: ""});
 
     useEffect(() => {
         axios
@@ -94,25 +94,25 @@ export function UpdateEvent({ _id, handleClose, handleUpdate }) {
                     />
 
                     <label className="label" htmlFor="date">
-                    Date
+                     Start Date
                     </label>
-                    <input
-                        type="text"
-                        name="date"
-                        onChange={handleChange}
-                        className="input"
-                        value={data.date}
+                    <DateTimePicker
+                    id="datePicker-1"
+                    value={data.startDate}
+                    onChange={(date) =>setData((data) => ({ ...data, startDate: date }))}
+                    formatStyle="large"
+                    className="input"
                     />
 
-                    <label className="label" htmlFor="time">
-                    Time
+                    <label className="label" htmlFor="date">
+                     End Date
                     </label>
-                    <input
-                        type="text"
-                        name="time"
-                        onChange={handleChange}
-                        className="input"
-                        value={data.time}
+                    <DateTimePicker
+                    id="datePicker-1"
+                    value={data.endDate}
+                    onChange={(date) =>setData((data) => ({ ...data, endDate: date }))}
+                    formatStyle="large"
+                    className="input"
                     />
 
                     <label className="label" htmlFor="venue">
