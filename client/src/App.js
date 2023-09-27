@@ -6,6 +6,7 @@ import  UserRegistered  from "./components/userRegistered";
 import Login from "./components/Logincomp";
 import Registration from "./components/Registercomp";
 import Reports from "./components/reports"
+import FeedbackForm from "./components/FeedbackForm";
 import "./App.scss";
 
 function App() {
@@ -20,9 +21,7 @@ function App() {
                     <Route path="/create-event" element={<CreateEvent />} />
                     <Route path="/Register" element={<Registration />} />
                     <Route path="/reports" element={<Reports />} /> //event records for admin dash
-
-
-
+                    <Route path="/feedback/:eventId" component={FeedbackForm} />
                 </Routes>
             </BrowserRouter>
         </div>

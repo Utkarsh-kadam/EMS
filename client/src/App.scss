@@ -442,3 +442,128 @@ table {
   }
   
   /* -------------------------------------table---------------------------------*/
+
+
+
+
+  /* Add this CSS code to your global CSS file to style the FeedbackForm component */
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(220, 13%, 28%);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  width: 50vw; /* Adjust the width as needed */
+  margin: 4rem auto; /* Adjust the margin as needed */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-form h3 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.feedback-form label {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+.feedback-form select {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: white; /* Adjust the background color as needed */
+  color: black; /* Adjust the text color as needed */
+}
+
+.feedback-form textarea {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  width: 100%;
+  margin-top: 0.5rem;
+  resize: vertical;
+  background-color: white; /* Adjust the background color as needed */
+  color: black; /* Adjust the text color as needed */
+}
+
+.feedback-form .question-container {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.feedback-form .question-container p {
+  font-size: 1.4rem;
+  color: white;
+}
+
+.feedback-form .question-container input[type="text"] {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: white; /* Adjust the background color as needed */
+  color: black; /* Adjust the text color as needed */
+}
+
+.feedback-form button {
+  font-size: 1.6rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #559c95;
+  color: white;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.feedback-form button:hover {
+  background-color: #3a7f78;
+}
+
+.feedback-form label {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  color: white;
+}
+
+.feedback-form input[type="password"] {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: white; /* Adjust the background color as needed */
+  color: black; /* Adjust the text color as needed */
+}
+
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .feedback-form {
+      width: 80vw;
+      padding: 1rem;
+  }
+
+  .feedback-form select,
+  .feedback-form textarea,
+  .feedback-form .question-container input[type="text"] {
+      width: 70vw;
+  }
+
+  .feedback-form button {
+      margin-top: 2rem;
+  }
+}
