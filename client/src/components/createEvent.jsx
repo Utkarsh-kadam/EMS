@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
-import {  DateTimePicker } from "react-rainbow-components";
+import {  Application,DateTimePicker } from "react-rainbow-components";
 
 
 export function CreateEvent() {
     const [data, setData] = useState({ name: "", description: "" ,organizer :"", startDate: "",
     endDate: "",venue:"",imageUrl: ""});
     const navigate =useNavigate();
+    const theme = {
+        rainbow: {
+            palette: {
+                brand: '#dea114',
+                mainBackground:'#00000',
+                text:"#fff",
+                border:'#dea114'
+            },
+            
+        },
+    };
   
 
     function handleChange(e) {
@@ -114,14 +125,14 @@ export function CreateEvent() {
                             <label className="label" htmlFor="startDate">
                             Start Date
                             </label>
-
+                        
                             <DateTimePicker
                                     id="datePicker-1"
                                     value={data.startDate}
                                     onChange={(date) =>setData((data) => ({ ...data, startDate: date }))}
-                                    formatStyle="large"
                                     className="input"
                                     />
+                         
             
                     </div>
 
@@ -129,6 +140,7 @@ export function CreateEvent() {
                     <label className="label" htmlFor="endDate">
                     End Date
                     </label>
+                   
                                  <DateTimePicker
                                     id="datePicker-1"
                                     value={data.endDate}
@@ -136,6 +148,7 @@ export function CreateEvent() {
                                     formatStyle="large"
                                     className="input"
                                     />
+                                
            
                 </div>
 

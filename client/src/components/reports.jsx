@@ -95,7 +95,7 @@ function Reports() {
                 <tr>
                   <th> </th>
                   <th>Name</th>
-                  <th>Date</th>
+                 
                   <th> </th>
                   <th> </th>
                 </tr>
@@ -105,7 +105,7 @@ function Reports() {
                   <tr key={event._id}>
                     <td>{index + 1}</td>
                     <td>{event.name}</td>
-                    <td>{event.date}</td>
+                    
                     <td>
                       <button
                         className="button-table"
