@@ -80,14 +80,15 @@ function FeedbackForm({ eventId, userId, onClose }) {
             value={feedbackData.questions[index]?.answer || ""}
             onChange={(e) => handleQuestionChange(index, e.target.value)}
           />
-
-<label>Password:</label>
-<input
-  type="password"
-  
-/>
-        </div>
+</div>
       ))}
+
+        <label>Password:</label>
+          <input
+            type="password"
+  
+          />
+        
       <button onClick={handleSubmitFeedback}>Submit Feedback</button>
     </div>
   );
