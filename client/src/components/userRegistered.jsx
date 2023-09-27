@@ -47,7 +47,7 @@ import React, { useState, useEffect } from "react";
   
    useEffect(() => { 
      axios 
-       .get(`http://localhost:3000/user/${userId}`) 
+       .get(`https://ems-api-63wi.onrender.com/user/${userId}`) 
        .then((res) => { 
          setEvent(res.data); 
        }) 
