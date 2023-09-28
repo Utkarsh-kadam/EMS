@@ -63,7 +63,7 @@ router.post("/attendance", async (req, res) => {
     }
 
     const response = await axios.get(`https://ems-api-63wi.onrender.com/event/${eventId}`);
-    const data = await response.json();
+    const data = response.data;
 
     if (data.eventpassword !== attendancePassword) {
       return res.status(401).json({ message: "Attendance password is incorrect" });
