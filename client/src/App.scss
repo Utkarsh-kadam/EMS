@@ -501,7 +501,8 @@ table {
 
 
 
-  /* Add this CSS code to your global CSS file to style the FeedbackForm component */
+
+  /* -------------------------------------feedback---------------------------------*/
 
 .feedback-form {
   display: flex;
@@ -622,3 +623,21 @@ table {
       margin-top: 2rem;
   }
 }
+
+  /* -------------------------------------feedback---------------------------------*/
+
+
+    /* -------------------------------------attendance---------------------------------*/
+    .mark-attendance{
+      padding:5rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .input-p{
+      width:60vw;
+      border-radius: 25px;
+      height: 30px;
+      text-align: center;
+    }
+

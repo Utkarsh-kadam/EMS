@@ -6,7 +6,6 @@ function FeedbackForm({ eventId, userId, onClose }) {
     rating: 0,
     comment: "",
     questions: [],
-    passcode: "",
   });
 
   const handleRatingChange = (e) => {
@@ -83,12 +82,6 @@ function FeedbackForm({ eventId, userId, onClose }) {
 </div>
       ))}
 
-        <label>Password:</label>
-          <input
-            type="password"
-  
-          />
-        
       <button onClick={handleSubmitFeedback}>Submit Feedback</button>
     </div>
   );

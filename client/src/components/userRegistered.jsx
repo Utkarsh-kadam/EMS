@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"; 
  import axios from "axios"; 
  import Navbar from "./Navbar"; 
- import { Link } from "react-router-dom"; 
+ import { Link,useNavigate } from "react-router-dom"; 
  import { ToastContainer } from "react-toastify"; 
  import "react-toastify/dist/ReactToastify.css"; 
  import FeedbackForm from "./FeedbackForm"; // Import the FeedbackForm component
@@ -9,11 +9,19 @@ import React, { useState, useEffect } from "react";
   
  function EventCard({ data, onFeedbackClick }) { 
    const { _id, name,date,venue,imageUrl } = data; 
+   const navigate = useNavigate();
+   const userId = localStorage.getItem("userId");
 
    const handleFeedbackClick = () => {
     // Call the onFeedbackClick function and pass the event data
     onFeedbackClick(data);
   };
+
+  const handleAttendanceClick = () => {
+    // Redirect to the Attendance page with eventId and userId as URL parameters
+      navigate(`/attendance/${_id}/${userId}/${name}`);
+  };
+
 
    return ( 
      <li key={_id} className="event-card"> 
@@ -24,9 +32,9 @@ import React, { useState, useEffect } from "react";
          <h3 className="event-title">{name}</h3> 
          <p className="event-info"><strong>{date}</strong></p> 
          <p className="event-info"><strong>Venue:</strong> {venue}</p> 
-         <button className="button"  onClick={handleFeedbackClick}> Feedback</button>
-
        </div> 
+       <button className="button"  onClick={handleFeedbackClick}> Feedback</button>
+         <button className="button"  onClick={handleAttendanceClick}> Attendance </button>
      </li> 
    ); 
  } 

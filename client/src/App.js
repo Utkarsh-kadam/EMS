@@ -7,10 +7,12 @@ import Login from "./components/Logincomp";
 import Registration from "./components/Registercomp";
 import Reports from "./components/reports"
 import FeedbackForm from "./components/FeedbackForm";
+import MarkAttendance from "./components/AttendanceForm";
 import "./App.scss";
 
 function App() {
     return (
+
         <div className="app-contents">
             <BrowserRouter>
                 <Routes> 
@@ -22,6 +24,8 @@ function App() {
                     <Route path="/Register" element={<Registration />} />
                     <Route path="/reports" element={<Reports />} /> //event records for admin dash
                     <Route path="/feedback/:eventId" component={FeedbackForm} />
+                    <Route path="/attendance/:eventId/:userId/:name" element={<MarkAttendance />} />
+                    
                 </Routes>
             </BrowserRouter>
         </div>
