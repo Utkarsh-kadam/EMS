@@ -13,6 +13,7 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
+    "axios": "^1.5.1",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -21,7 +22,6 @@
     "moment-timezone": "^0.5.43",
     "mongodb": "3.6",
     "mongoose": "^7.5.0",
-    "node-datetime": "^2.1.2",
-    "node-fetch": "^3.3.2"
+    "node-datetime": "^2.1.2"
   }
 }

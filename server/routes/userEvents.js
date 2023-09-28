@@ -5,7 +5,7 @@ const Registration = require("../db/eventRegistrationModel");
 const Event = require("../db/eventModel");
 const Attendance =  require("../db/attendanceModel");
 const Feedback = require("../db/feedbackModel");
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 
 // Endpoint to get registered events for a user
@@ -62,7 +62,7 @@ router.post("/attendance", async (req, res) => {
       return res.status(400).json({ message: "Attendance already recorded for this event" });
     }
 
-    const response = await fetch(`https://ems-api-63wi.onrender.com/event/${eventId}`);
+    const response = await axios.get(`https://ems-api-63wi.onrender.com/event/${eventId}`);
     const data = await response.json();
 
     if (data.eventpassword !== attendancePassword) {
