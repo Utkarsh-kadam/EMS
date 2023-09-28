@@ -33,7 +33,7 @@ function FeedbackForm({ eventId, userId, onClose }) {
     });
 
     axios
-      .post("http://localhost:3000/user/feedback", {
+      .post("https://ems-api-63wi.onrender.com/user/feedback", {
         userId,
         eventId,
         rating: feedbackData.rating,
