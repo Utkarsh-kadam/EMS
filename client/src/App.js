@@ -23,7 +23,7 @@ function App() {
                     <Route path="/create-event" element={<CreateEvent />} />
                     <Route path="/Register" element={<Registration />} />
                     <Route path="/reports" element={<Reports />} /> //event records for admin dash
-                    <Route path="/feedback/:eventId" component={FeedbackForm} />
+                    <Route path="/feedback/:eventId/:userId/:name" element={<FeedbackForm/>} />
                     <Route path="/attendance/:eventId/:userId/:name" element={<MarkAttendance />} />
                     
                 </Routes>

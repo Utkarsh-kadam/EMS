@@ -13,14 +13,6 @@ const feedbackSchema = new mongoose.Schema({
     ref: "Event", // Reference to the Event model
     required: true,
   },
-  rating: {
-    type: Number,
-    required: true,
-  },
-  comment: {
-    type: String, 
-    required: true,
-  },
   questions: [
     {
       question: {
