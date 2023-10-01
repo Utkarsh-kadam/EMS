@@ -3,12 +3,19 @@ import axios from 'axios';
 import Navbar from './Navbar';
 import { VscFeedback } from "react-icons/vsc";
 import { MdGroups } from "react-icons/md";
+import FeedbackAnalysis from './FeedbackAnalysis'; 
+import { Link,Route } from 'react-router-dom'; 
+
 
 function Reports() {
   const [events, setEvent] = useState([]);
   const [users, setUser] = useState([]);
   const [showAttendance, setShowAttendance] = useState(false);
   const [eventName, setEventName] = useState(''); 
+  const [feedback, setFeedback] = useState([]);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [selectedEventId, setSelectedEventId] = useState(null); // Add selectedEventId state
+
 
   useEffect(() => {
     // Fetch event data from your API endpoint
@@ -39,8 +46,26 @@ function Reports() {
 
 
   };
+
+  const handleFeedbackClick = (eventId, eventName) => {
+    setEventName(eventName);
+    setShowFeedback(true);
+    setSelectedEventId(eventId);
+
+    axios
+      .get(`https://ems-api-63wi.onrender.com/admin/feedback/${eventId}`)
+      .then((res) => {
+        setFeedback(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   const handleBackClick = () => {
     setShowAttendance(false); // Set showAttendance to false to go back to event list state
+    setShowFeedback(false);
+    setSelectedEventId(null);
   };
 
   return (
@@ -81,10 +106,13 @@ function Reports() {
             </section>
       </section>
                 
-            
-            
-            
-          ) : (
+            ) : showFeedback ? (
+              // Render feedback analysis
+              <Route
+                path={`/feedback-analysis/${selectedEventId}`} // Define the route path
+                render={() => <FeedbackAnalysis eventId={selectedEventId} />} // Render the FeedbackAnalysis component
+              />
+            ):(
             <section className="container">
             <section className="contents">
 
@@ -115,9 +143,12 @@ function Reports() {
                       </button>
                     </td>
                     <td>
+                    <Link
+                        to={`/feedback-analysis/${event._id}`} >
                       <button className="button-table">
                         <VscFeedback className='table-icon' />
                         </button>
+                        </Link>
                     </td>
                   </tr>
                 ))}

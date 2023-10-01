@@ -4,17 +4,16 @@ import React, { useState, useEffect } from "react";
  import { Link,useNavigate } from "react-router-dom"; 
  import { ToastContainer } from "react-toastify"; 
  import "react-toastify/dist/ReactToastify.css"; 
- import FeedbackForm from "./FeedbackForm"; // Import the FeedbackForm component
 
   
- function EventCard({ data, onFeedbackClick }) { 
+ function EventCard({ data }) { 
    const { _id, name,date,venue,imageUrl } = data; 
    const navigate = useNavigate();
    const userId = localStorage.getItem("userId");
 
    const handleFeedbackClick = () => {
-    // Call the onFeedbackClick function and pass the event data
-    onFeedbackClick(data);
+     // Redirect to the Feedback page with eventId and userId as URL parameters
+    navigate(`/feedback/${_id}/${userId}/${name}`);
   };
 
   const handleAttendanceClick = () => {
@@ -42,15 +41,7 @@ import React, { useState, useEffect } from "react";
  function UserRegistered() {
   const [event, setEvent] = useState([]);
   const userId = localStorage.getItem("userId");
-  const [selectedEvent, setSelectedEvent] = useState(null); // Define selectedEvent state
-
-  const handleFeedbackClick = (data) => {
-    console.log("Event data:", data); // Check if data is correctly passed
-
-    // When a user clicks the "Provide Feedback" button,
-    // set the selected event and show the feedback form.
-    setSelectedEvent(data);
-  };
+ 
 
   
    useEffect(() => { 
@@ -75,20 +66,13 @@ import React, { useState, useEffect } from "react";
          <ul className="list-container"> 
            {event.map((data) => ( 
              <EventCard key={data._id} data={data} 
-             onFeedbackClick={handleFeedbackClick}/> 
+             /> 
            ))} 
          </ul> 
        </section> 
      </section> 
 
-     {selectedEvent && (
-        <FeedbackForm
-        eventId={selectedEvent._id} // Make sure to pass the eventId prop here
-        userId={userId}
-        onClose={() => setSelectedEvent(null)}
-      />
-      )}
-  
+     
      </div> 
   
    ); 

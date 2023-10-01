@@ -5,7 +5,6 @@ const Registration = require("../db/eventRegistrationModel");
 const Event = require("../db/eventModel");
 const Attendance =  require("../db/attendanceModel");
 const Feedback = require("../db/feedbackModel");
-const axios = require('axios');
 
 
 // Endpoint to get registered events for a user
@@ -46,7 +45,7 @@ router.get("/:userId", async (req, res) => {
 // Endpoint to mark attendance for a user
 router.post("/attendance", async (req, res) => {
   const { userId, eventId ,attendancePassword} = req.body;
-
+  
   try {
     // Check if the user is already registered for the event
     const existingRegistration = await Registration.findOne({ userId, eventId });
@@ -62,8 +61,8 @@ router.post("/attendance", async (req, res) => {
       return res.status(400).json({ message: "Attendance already recorded for this event" });
     }
 
-    const response = await axios.get(`https://ems-api-63wi.onrender.com/event/${eventId}`);
-    const data = response.data;
+    const response = await fetch(`https://ems-api-63wi.onrender.com/event/${eventId}`);
+    const data = await response.json();
 
     if (data.eventpassword !== attendancePassword) {
       return res.status(401).json({ message: "Attendance password is incorrect" });
@@ -84,7 +83,7 @@ router.post("/attendance", async (req, res) => {
 
 // Endpoint to submit feedback for an event
 router.post("/feedback", async (req, res) => {
-  const { userId, eventId, rating, comment, questions } = req.body;
+  const { userId, eventId, questions } = req.body;
   console.log(req.body); 
 
   try {
@@ -93,14 +92,12 @@ router.post("/feedback", async (req, res) => {
 
     if (existingFeedback) {
       return res.status(400).json({ message: "Feedback already submitted for this event" });
-    }
 
+    }
     // Create a new feedback object
     const feedback = new Feedback({
       userId,
       eventId,
-      rating,
-      comment,
       questions,
     
     });
