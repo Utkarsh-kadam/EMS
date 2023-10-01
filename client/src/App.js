@@ -8,6 +8,7 @@ import Registration from "./components/Registercomp";
 import Reports from "./components/reports"
 import FeedbackForm from "./components/FeedbackForm";
 import MarkAttendance from "./components/AttendanceForm";
+import FeedbackAnalysis from './components/FeedbackAnalysis';
 import "./App.scss";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/reports" element={<Reports />} /> //event records for admin dash
                     <Route path="/feedback/:eventId/:userId/:name" element={<FeedbackForm/>} />
                     <Route path="/attendance/:eventId/:userId/:name" element={<MarkAttendance />} />
+                    <Route path="/feedback-analysis/:eventId" element={<FeedbackAnalysis/>} />
                     
                 </Routes>
             </BrowserRouter>
