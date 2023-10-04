@@ -649,7 +649,7 @@ table {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #192329;
+  background-color: #323b40;
   border-radius: 0.5rem;
   padding: 2rem;
   width: 80vw;
@@ -658,17 +658,6 @@ table {
   color: white;
 }
 
-.feedback-analysis h2 {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.feedback-analysis p {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
 
 /* Add PO or Add PSO Buttons */
 .feedback-analysis .add-button-container {
@@ -731,7 +720,7 @@ table {
 .feedback-analysis .matrix-table td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
@@ -742,7 +731,7 @@ table {
   border-radius: 7px;
   margin-right: 8px;
   appearance: none;
-  background: ghostwhite url('./img/down-arrow.png') no-repeat right center;
+  background: ghostwhite;
   background-size: 11px;
   background-position: 34px;
   cursor: pointer;
@@ -797,3 +786,5 @@ table {
 
 
     /* -----------------------------Feedback Analysis---------------------------------*/
+
+   

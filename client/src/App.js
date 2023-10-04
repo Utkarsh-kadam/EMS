@@ -26,7 +26,7 @@ function App() {
                     <Route path="/reports" element={<Reports />} /> //event records for admin dash
                     <Route path="/feedback/:eventId/:userId/:name" element={<FeedbackForm/>} />
                     <Route path="/attendance/:eventId/:userId/:name" element={<MarkAttendance />} />
-                    <Route path="/feedback-analysis/:eventId" element={<FeedbackAnalysis/>} />
+                    <Route path="/feedback-analysis/:eventId/:eventName/:eventDate" element={<FeedbackAnalysis/>} />
                     
                 </Routes>
             </BrowserRouter>

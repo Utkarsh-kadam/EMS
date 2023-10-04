@@ -2,33 +2,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+
 function FeedbackAnalysis() {
-  const [eventData, setEventData] = useState({});
   const [loading, setLoading] = useState(true);
   const [poMatrix, setPoMatrix] = useState([]); // Array to store PO Matrix [{ name: 'PO1', mapping: 'Mapping1' }, ...]
   const [psoMatrix, setPsoMatrix] = useState([]); // Array to store PSO Matrix [{ name: 'PSO1', mapping: 'Mapping1' }, ...]
   const [selectedPo, setSelectedPo] = useState(''); // Selected PO value
   const [selectedPso, setSelectedPso] = useState(''); // Selected PSO value
-  const [selectedPoMapping, setSelectedPoMapping] = useState(''); // Mapping value for selected PO
-  const [selectedPsoMapping, setSelectedPsoMapping] = useState(''); // Mapping value for selected PSO
   const [questionAnalysis, setQuestionAnalysis] = useState({});
-  const {eventId,eventName}=useParams();
+  const {eventId,eventName,eventDate}=useParams();
+
+  const selectedPoMapping = "1";
+  const selectedPsoMapping = "1";
   
 
-  useEffect(() => {
-    console.log("Event:",eventId)
-    // Fetch event data for feedback analysis
-    axios
-      .get(`https://ems-api-63wi.onrender.com/admin/feedback/${eventId}`)
-      .then((res) => {
-        setEventData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        setLoading(false);
-      });
-  }, [eventId]);
+
 
     // Function to fetch and set question analysis
     useEffect(() => {
@@ -36,14 +24,20 @@ function FeedbackAnalysis() {
         .get(`https://ems-api-63wi.onrender.com/admin/feedback/${eventId}`)
         .then((res) => {
           setQuestionAnalysis(res.data.questionAnalysis);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err.message);
+          setLoading(false);
         });
     }, [eventId]);
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleString();;
   }
 
   // Function to handle adding PO to the matrix
@@ -51,7 +45,6 @@ function FeedbackAnalysis() {
     if (selectedPo && !poMatrix.some(po => po.name === selectedPo)) {
       setPoMatrix([...poMatrix, { name: selectedPo, mapping: selectedPoMapping }]);
       setSelectedPo('');
-      setSelectedPoMapping('');
     }
   };
 
@@ -60,7 +53,6 @@ function FeedbackAnalysis() {
     if (selectedPso && !psoMatrix.some(pso => pso.name === selectedPso)) {
       setPsoMatrix([...psoMatrix, { name: selectedPso, mapping: selectedPsoMapping }]);
       setSelectedPso('');
-      setSelectedPsoMapping('');
     }
   };
 
@@ -78,11 +70,10 @@ function FeedbackAnalysis() {
 
   return (
     <div className="feedback-analysis">
-      <h2>Feedback Form Analysis</h2>
-      <p>Event Name: {eventData.eventName}</p>
-      <p>Date & Time: {eventData.dateTime}</p>
+      <h3>Feedback Form Analysis</h3>
+      <h5>Event Name: {eventName}</h5>
+      <h5>Date & Time:{formatDate(eventDate)} </h5>
 
-      <h3>Feedback Analysis</h3>
       <table className="matrix-table">
         <thead>
           <tr>
@@ -108,13 +99,16 @@ function FeedbackAnalysis() {
         </tbody>
       </table>
 
+      <br/>
+
       <h3>Activity-PO Matrix</h3>
       <div className="matrix-input">
         <select
+         
           value={selectedPo}
           onChange={(e) => setSelectedPo(e.target.value)}
         >
-          <option value="">PO</option>
+           <option  >Select PO</option>
           <option value="PO1">PO1</option>
           <option value="PO2">PO2</option>
           <option value="PO3">PO3</option>
@@ -130,12 +124,7 @@ function FeedbackAnalysis() {
 
 
         </select>
-        <input className='PO-input' 
-          type="text"
-          placeholder="Enter Mapping"
-          value={selectedPoMapping}
-          onChange={(e) => setSelectedPoMapping(e.target.value)}
-        />
+      
         <button className="add-button" onClick={addPoToMatrix}>
           Add PO
         </button>
@@ -163,6 +152,8 @@ function FeedbackAnalysis() {
           </tr>
         </tbody>
       </table>
+      <br/>
+
 
       <h3>Activity PSO-Matrix</h3>
       <div className="matrix-input">
@@ -170,18 +161,13 @@ function FeedbackAnalysis() {
           value={selectedPso}
           onChange={(e) => setSelectedPso(e.target.value)}
         >
-          <option value="">PSO</option>
+           <option >Select PSO</option>
           <option value="PSO1">PSO1</option>
           <option value="PSO2">PSO2</option>
-          <option value="PSO2">PSO3</option>3
+          <option value="PSO3">PSO3</option>3
           {/* Add more PSO options here */}
         </select>
-        <input className='PO-input'
-          type="text"
-          placeholder="Enter Mapping"
-          value={selectedPsoMapping}
-          onChange={(e) => setSelectedPsoMapping(e.target.value)}
-        />
+      
         <button className="add-button" onClick={addPsoToMatrix}>
           Add PSO
         </button>
