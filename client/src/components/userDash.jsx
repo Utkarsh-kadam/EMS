@@ -9,7 +9,15 @@ import Navbar from "./Navbar";
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  return date.toLocaleString();;
+  const options = {
+    year: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  };
+  return date.toLocaleDateString(undefined, options);
 }
 
 function EventCard({ data,handleEventRegister }) {
@@ -50,7 +58,8 @@ export function UserDash() {
             axios
                 .get("https://ems-api-63wi.onrender.com/event")
                 .then((res) => {
-                    setEvent(res.data);
+                  const sortedEvents = res.data.sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
+                  setEvent(sortedEvents);
                 })
                 .catch((err) => {
                     console.log(err.message);
