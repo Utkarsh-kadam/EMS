@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./toast";
-import Navbar from "./Navbar";
+import { notify } from "../utils/toast";
+import Navbar from "../utils/Navbar";
 
 
 function formatDate(dateString) {

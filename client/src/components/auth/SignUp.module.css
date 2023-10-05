@@ -101,7 +101,7 @@ h2{
 
 .unCompleted::after {
   content: "";
-  background-image: url(../img/close.svg);
+  background-image: url(./img/close.svg);
   position: absolute;
   width: 15px;
   height: 15px;
@@ -112,7 +112,7 @@ h2{
 
 .completed::after {
   content: "";
-  background-image: url(../img/check.svg);
+  background-image: url(./img/check.svg);
   position: absolute;
   width: 15px;
   height: 15px;

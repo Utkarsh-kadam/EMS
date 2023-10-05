@@ -3,7 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import styles from "./SignUp.module.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./toast";
+import { notify } from "../utils/toast";
 import { PulseLoader } from 'react-spinners';
 
 

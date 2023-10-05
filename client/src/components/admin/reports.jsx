@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
+import Navbar from '../utils/Navbar';
 import { VscFeedback } from "react-icons/vsc";
 import { MdGroups } from "react-icons/md";
 import { Link,Route } from 'react-router-dom'; 

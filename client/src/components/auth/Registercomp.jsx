@@ -4,7 +4,7 @@ import { validate } from "./validate";
 import styles from "./SignUp.module.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { notify } from "./toast";
+import { notify } from "../utils/toast";
 import { PulseLoader } from 'react-spinners';
 
 

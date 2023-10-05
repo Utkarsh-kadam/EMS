@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"; 
-import { ShowEventList } from "./components/showEvent";
-import { CreateEvent } from "./components/createEvent";
-import { UserDash } from "./components/userDash";
-import  UserRegistered  from "./components/userRegistered";
-import Login from "./components/Logincomp";
-import Registration from "./components/Registercomp";
-import Reports from "./components/reports"
-import FeedbackForm from "./components/FeedbackForm";
-import MarkAttendance from "./components/AttendanceForm";
-import FeedbackAnalysis from './components/FeedbackAnalysis';
+import { ShowEventList } from "./components/admin/showEvent";
+import { CreateEvent } from "./components/admin/createEvent";
+import { UserDash } from "./components/user/userDash";
+import  UserRegistered  from "./components/user/userRegistered";
+import Login from "./components/auth/Logincomp";
+import Registration from "./components/auth/Registercomp";
+import Reports from "./components/admin/reports"
+import FeedbackForm from "./components/user/FeedbackForm";
+import MarkAttendance from "./components/user/AttendanceForm";
+import FeedbackAnalysis from './components/admin/FeedbackAnalysis';
 import "./App.scss";
 
 function App() {
