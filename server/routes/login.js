@@ -42,6 +42,7 @@ router.post("/login", (request, response) => {
               role:role,
               token,
             });
+            console.log(user.email);
           })
           // catch error if password does not match
           .catch((error) => {
