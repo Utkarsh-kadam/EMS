@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Header from '../utils/MGMheader';
+import Footer from '../utils/MGMfooter';
 
 
 function FeedbackAnalysis() {
@@ -9,11 +11,11 @@ function FeedbackAnalysis() {
   const [psoMatrix, setPsoMatrix] = useState([]); // Array to store PSO Matrix [{ name: 'PSO1', mapping: 'Mapping1' }, ...]
   const [selectedPo, setSelectedPo] = useState(''); // Selected PO value
   const [selectedPso, setSelectedPso] = useState(''); // Selected PSO value
+  const [selectedPoMapping, setSelectedPoMapping] = useState(''); // Mapping value for selected PO
+  const [selectedPsoMapping, setSelectedPsoMapping] = useState('');
   const [questionAnalysis, setQuestionAnalysis] = useState({});
   const {eventId,eventName,eventDate}=useParams();
 
-  const selectedPoMapping = "1";
-  const selectedPsoMapping = "1";
   
 
 
@@ -70,9 +72,13 @@ function FeedbackAnalysis() {
 
   return (
     <div className="feedback-analysis">
-      <h3>Feedback Form Analysis</h3>
+      <Header/>
+      <h4 className='feedback-heading'>Feedback Form Analysis</h4>
+      <br/>
       <h5>Event Name: {eventName}</h5>
-      <h5>Date & Time:{formatDate(eventDate)} </h5>
+      <h5>Date & Time: {formatDate(eventDate)} </h5>
+      <br/>
+      <h5>Feedback Analysis</h5>
 
       <table className="matrix-table">
         <thead>
@@ -101,7 +107,7 @@ function FeedbackAnalysis() {
 
       <br/>
 
-      <h3>Activity-PO Matrix</h3>
+      <h5>Activity-PO Matrix</h5>
       <div className="matrix-input">
         <select
          
@@ -121,9 +127,14 @@ function FeedbackAnalysis() {
           <option value="PO10">PO10</option>
           <option value="PO11">PO11</option>
           <option value="PO12">PO12</option>
-
-
         </select>
+
+        <input className='PO-input' 
+          type="text"
+          placeholder="Enter Mapping"
+          value={selectedPoMapping}
+          onChange={(e) => setSelectedPoMapping(e.target.value)}
+        />
       
         <button className="add-button" onClick={addPoToMatrix}>
           Add PO
@@ -155,7 +166,7 @@ function FeedbackAnalysis() {
       <br/>
 
 
-      <h3>Activity PSO-Matrix</h3>
+      <h5>Activity PSO-Matrix</h5>
       <div className="matrix-input">
         <select
           value={selectedPso}
@@ -167,6 +178,12 @@ function FeedbackAnalysis() {
           <option value="PSO3">PSO3</option>3
           {/* Add more PSO options here */}
         </select>
+        <input className='PO-input'
+          type="text"
+          placeholder="Enter Mapping"
+          value={selectedPsoMapping}
+          onChange={(e) => setSelectedPsoMapping(e.target.value)}
+        />
       
         <button className="add-button" onClick={addPsoToMatrix}>
           Add PSO
@@ -195,6 +212,8 @@ function FeedbackAnalysis() {
           </tr>
         </tbody>
       </table>
+      <br/>
+      <Footer/>
     </div>
   );
 }

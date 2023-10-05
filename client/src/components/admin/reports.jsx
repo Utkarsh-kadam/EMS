@@ -4,6 +4,8 @@ import Navbar from '../utils/Navbar';
 import { VscFeedback } from "react-icons/vsc";
 import { MdGroups } from "react-icons/md";
 import { Link,Route } from 'react-router-dom'; 
+import Header from '../utils/MGMheader';
+import Footer from '../utils/MGMfooter';
 
 
 function Reports() {
@@ -54,16 +56,14 @@ function Reports() {
             // Render attendance table
             <section className="container">
             <section className="contents">
-            <button className="button" onClick={handleBackClick}>
-                Back 
-              </button>
-            <h3>Attendace for {eventName}</h3>
+            <Header/>
+            <h4>Attendace for {eventName}</h4>
             <table>
               <thead>
                 <tr>
-                  <th> </th>
-                  <th>Name</th>
+                  <th>Sr </th>
                   <th>PRN</th>
+                  <th>Name </th>
                   <th>College</th>
                 </tr>
               </thead>
@@ -71,8 +71,8 @@ function Reports() {
               {users.map((users,index) => (
                   <tr key={users._id}>
                     <td>{index + 1}</td>
-                    <td>{users.username}</td>
                     <td>{users.prn}</td>
+                    <td>{users.username}</td>
                     <td>
                     {users.college}
                     </td>
@@ -80,9 +80,11 @@ function Reports() {
                 ))}
               </tbody>
             </table>
+            <h5>Total Students : {users.length}</h5>
+            <br/>
 
             </section>
-      </section>
+             </section>
                 
             ):(
             <section className="container">

@@ -481,7 +481,7 @@ table {
   td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-    font-size: 0.8 rem;
+    font-size: 2rem;
     text-align: center;
   }
   @media (max-width: 768px) {
@@ -648,7 +648,6 @@ table {
 .feedback-analysis {
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: #323b40;
   border-radius: 0.5rem;
   padding: 2rem;
@@ -679,8 +678,8 @@ table {
 
 .feedback-analysis .add-button,
 .feedback-analysis .delete-button {
-  font-size: 1.2rem;
-  padding: 0.3rem 0.7rem;
+  font-size: 1.3rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 25px;
   background: #3a7f78;
@@ -695,8 +694,12 @@ table {
   background-color: #1a1c1c;
 }
 
+.feedback-heading{
+  text-align: center;
+}
+
 .PO-input {
-  width: 50%;
+  width: 10%;
   border-radius: 25px;
   height: 35px;
   text-align: center;
@@ -735,6 +738,10 @@ table {
   background-size: 11px;
   background-position: 34px;
   cursor: pointer;
+}
+
+h5{
+  text-align: left;
 }
 
 /* Style the select element when hovered */
@@ -787,4 +794,15 @@ table {
 
     /* -----------------------------Feedback Analysis---------------------------------*/
 
-   
+    /* -----------------------------REPORT HEADER---------------------------------*/
+    .report-header{
+      text-align: center;
+      color: white;
+    }
+    .report-sub-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+     /* -----------------------------REPORT HEADER---------------------------------*/
+
