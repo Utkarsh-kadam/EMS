@@ -15,6 +15,8 @@ function FeedbackAnalysis() {
   const [selectedPsoMapping, setSelectedPsoMapping] = useState('');
   const [questionAnalysis, setQuestionAnalysis] = useState({});
   const {eventId,eventName,eventDate}=useParams();
+  const [isOptionMenuVisible, setIsOptionMenuVisible] = useState(true); // State to control option menu visibility
+
 
   
 
@@ -70,6 +72,21 @@ function FeedbackAnalysis() {
     setPsoMatrix(updatedPsoMatrix);
   };
 
+  const handleDoneClick = () => {
+    // Hide the delete buttons
+    const deleteButtons = document.querySelectorAll(".delete-button");
+    deleteButtons.forEach((button) => {
+      button.style.display = "none";
+    });
+  
+    // Set isOptionMenuVisible to false and trigger the print dialog
+    setIsOptionMenuVisible(false);
+    
+  };
+  
+  
+
+
   return (
     <div className="feedback-analysis">
       <Header/>
@@ -106,8 +123,11 @@ function FeedbackAnalysis() {
       </table>
 
       <br/>
-
+    
       <h5>Activity-PO Matrix</h5>
+      
+      {isOptionMenuVisible && (
+        <div>
       <div className="matrix-input">
         <select
          
@@ -130,7 +150,7 @@ function FeedbackAnalysis() {
         </select>
 
         <input className='PO-input' 
-          type="text"
+          type="number"
           placeholder="Enter Mapping"
           value={selectedPoMapping}
           onChange={(e) => setSelectedPoMapping(e.target.value)}
@@ -140,7 +160,10 @@ function FeedbackAnalysis() {
           Add PO
         </button>
       </div>
-      <table className="matrix-table">
+      </div>
+      )}
+
+      <table className="PO-table">
         <thead>
           <tr>
             <th></th>
@@ -165,8 +188,10 @@ function FeedbackAnalysis() {
       </table>
       <br/>
 
-
+       
       <h5>Activity PSO-Matrix</h5>
+      {isOptionMenuVisible && (
+        <div>
       <div className="matrix-input">
         <select
           value={selectedPso}
@@ -179,7 +204,7 @@ function FeedbackAnalysis() {
           {/* Add more PSO options here */}
         </select>
         <input className='PO-input'
-          type="text"
+          type="number"
           placeholder="Enter Mapping"
           value={selectedPsoMapping}
           onChange={(e) => setSelectedPsoMapping(e.target.value)}
@@ -189,7 +214,10 @@ function FeedbackAnalysis() {
           Add PSO
         </button>
       </div>
-      <table className="matrix-table">
+      </div>
+       )}
+
+      <table className="PO-table">
         <thead>
           <tr>
             <th></th>
@@ -213,6 +241,12 @@ function FeedbackAnalysis() {
         </tbody>
       </table>
       <br/>
+      {isOptionMenuVisible && (
+        <button className="button" onClick={handleDoneClick}>
+          Print
+        </button>
+      )}
+      
       <Footer/>
     </div>
   );
