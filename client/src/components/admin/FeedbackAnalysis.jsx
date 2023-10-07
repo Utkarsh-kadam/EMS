@@ -3,6 +3,10 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Header from '../utils/MGMheader';
 import Footer from '../utils/MGMfooter';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
+
 
 
 function FeedbackAnalysis() {
@@ -79,10 +83,35 @@ function FeedbackAnalysis() {
       button.style.display = "none";
     });
   
-    // Set isOptionMenuVisible to false and trigger the print dialog
+    // Set isOptionMenuVisible to false
     setIsOptionMenuVisible(false);
-    
+  
+    // Trigger the print dialog after a brief delay (to allow hiding to take effect)
+    setTimeout(() => {
+      generatePDF();
+    }, 100); // You can adjust the delay as needed
   };
+  
+  const generatePDF = () => {
+    const doc = new jsPDF();
+  
+    // Define the HTML content to be converted to PDF
+    const content = document.querySelector('.feedback-analysis');
+  
+    // Convert the HTML content to a canvas
+    html2canvas(content).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const width = doc.internal.pageSize.getWidth();
+      const height = (canvas.height * width) / canvas.width;
+  
+      // Add the canvas image to the PDF
+      doc.addImage(imgData, 'PNG', 0, 0, width, height);
+  
+      // Save or download the PDF
+      doc.save({eventName}+'.pdf');
+    });
+  };
+  
   
   
 
@@ -243,7 +272,7 @@ function FeedbackAnalysis() {
       <br/>
       {isOptionMenuVisible && (
         <button className="button" onClick={handleDoneClick}>
-          Print
+         Download PDF
         </button>
       )}
       
