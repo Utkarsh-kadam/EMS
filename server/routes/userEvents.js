@@ -54,6 +54,12 @@ router.post("/attendance", async (req, res) => {
       return res.status(400).json({ message: "User is not registered for the event" });
     }
 
+    // Check if the user has given feedback for the event
+    const feedbackCheck = await Feedback.findOne({ userId, eventId });
+    if (!feedbackCheck) {
+      return res.status(405).json({ message: "Feedback not submitted for the event" });
+    }
+
     // Check if attendance already exists
     const existingAttendance = await Attendance.findOne({ userId, eventId });
 
