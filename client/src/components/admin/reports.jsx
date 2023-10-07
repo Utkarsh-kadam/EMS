@@ -11,7 +11,6 @@ import Footer from '../utils/MGMfooter';
 function Reports() {
   const [events, setEvent] = useState([]);
   const [users, setUser] = useState([]);
-  const [showAttendance, setShowAttendance] = useState(false);
   const [eventName, setEventName] = useState('');
 
 
@@ -27,66 +26,10 @@ function Reports() {
       });
   }, []);
 
-  const handleAttendanceClick = (eventId, eventName) => {
-    setEventName(eventName); 
-    setShowAttendance(true);
-
-    axios
-    .get(`https://ems-api-63wi.onrender.com/admin/${eventId}`)
-    .then((res) => {
-        
-      setUser(res.data);
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  };
-
-  
-
-  const handleBackClick = () => {
-    setShowAttendance(false); // Set showAttendance to false to go back to event list state
-  };
 
   return (
     <div>
       <Navbar isAdmin={true} />
-    
-          {showAttendance ? (
-            // Render attendance table
-            <section className="container">
-            <section className="contents">
-            <Header/>
-            <h4>Attendace for {eventName}</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Sr </th>
-                  <th>PRN</th>
-                  <th>Name </th>
-                  <th>College</th>
-                </tr>
-              </thead>
-              <tbody>
-              {users.map((users,index) => (
-                  <tr key={users._id}>
-                    <td>{index + 1}</td>
-                    <td>{users.prn}</td>
-                    <td>{users.username}</td>
-                    <td>
-                    {users.college}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <h5>Total Students : {users.length}</h5>
-            <br/>
-
-            </section>
-             </section>
-                
-            ):(
             <section className="container">
             <section className="contents">
 
@@ -109,12 +52,13 @@ function Reports() {
                     <td>{event.name}</td>
                     
                     <td>
+                    <Link
+                        to={`/attendance-report/${event._id}/${event.name}/${event.startDate}`} >
                       <button
-                        className="button-table"
-                        onClick={() => handleAttendanceClick(event._id, event.name)}>
-                          
+                        className="button-table">
                             < MdGroups className='table-icon'  />
                       </button>
+                      </Link>
                     </td>
                     <td>
                     <Link
@@ -131,8 +75,6 @@ function Reports() {
             </section>
       </section>
           
-           
-          )}
         
     </div>
   );

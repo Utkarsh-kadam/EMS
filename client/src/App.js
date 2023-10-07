@@ -9,6 +9,7 @@ import Reports from "./components/admin/reports"
 import FeedbackForm from "./components/user/FeedbackForm";
 import MarkAttendance from "./components/user/AttendanceForm";
 import FeedbackAnalysis from './components/admin/FeedbackAnalysis';
+import AttendanceReport from "./components/admin/AttendanceReport";
 import "./App.scss";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/feedback/:eventId/:userId/:name" element={<FeedbackForm/>} />
                     <Route path="/attendance/:eventId/:userId/:name" element={<MarkAttendance />} />
                     <Route path="/feedback-analysis/:eventId/:eventName/:eventDate" element={<FeedbackAnalysis/>} />
+                    <Route path="/attendance-report/:eventId/:eventName/:eventDate" element={<AttendanceReport/>} />
                     
                 </Routes>
             </BrowserRouter>
