@@ -8,6 +8,18 @@
     box-sizing: border-box;
 }
 
+.app-contents {
+  background-color: #192329;
+  min-height: 100vh;
+  height: max-content;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 html {
     font-size: 67%;
      overflow-x: hidden;
@@ -86,8 +98,8 @@ a {
     font-size: 20px;
    }
   }
- 
 }
+
 .table-icon{
   font-size: 30px;
 }
@@ -115,16 +127,9 @@ a {
     border-radius: 1rem;
 }
 
-.app-contents {
-    background-color: #192329;
-    min-height: 100vh;
-    height: max-content;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+
+.not-account{
+  text-align: center;
 }
 
 .container {
@@ -540,6 +545,7 @@ table {
   color: black; /* Adjust the text color as needed */
 }
 
+
 .feedback-form textarea {
   font-size: 1.4rem;
   padding: 0.5rem;
@@ -743,6 +749,7 @@ table {
 h5{
   text-align: left;
 }
+
 
 /* Style the select element when hovered */
 .matrix-input select:hover {

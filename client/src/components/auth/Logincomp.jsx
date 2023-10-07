@@ -101,8 +101,9 @@ function Login() {
             ) : (
               <button type="submit">Login</button>
             )}
-        <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
-         <h5>Don't have a account?</h5>  <Link className={styles.link} to="/Register">Create account</Link>
+        <span style={{ color: "black", textAlign:"center", display: "inline-block", width: "100%" }}>
+         <h5 className='not-account'> Don't have a account?</h5> 
+          <Link className={styles.link} to="/Register">Create account</Link>
         </span>
       </div>
 

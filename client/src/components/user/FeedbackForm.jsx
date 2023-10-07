@@ -61,11 +61,23 @@ function FeedbackForm() {
       {feedbackQuestions.map((question, index) => (
         <div key={index} className="question-container">
           <p>{question}</p>
-          <input
-            type="text"
-            value={feedbackData.questions[index]?.answer || ""}
-            onChange={(e) => handleQuestionChange(index, e.target.value)}
-          />
+          {index < 3 ? (
+            <select
+              value={feedbackData.questions[index]?.answer || ""}
+              onChange={(e) => handleQuestionChange(index, e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          ) : (
+            <input
+              type="text"
+              value={feedbackData.questions[index]?.answer || ""}
+              onChange={(e) => handleQuestionChange(index, e.target.value)}
+            />
+          )}
         </div>
       ))}
       <button onClick={handleSubmitFeedback}>Submit Feedback</button>

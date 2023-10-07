@@ -137,7 +137,7 @@ function Registration() {
             )}
         <span style={{ color: "black", textAlign: "center", display: "inline-block", width: "100%" }}>
 
-         <h5> Already have a account?</h5> <Link className={styles.link} to="/">Login</Link>
+         <h5 className='not-account' > Already have a account?</h5> <Link className={styles.link} to="/">Login</Link>
 
         </span>
       </div>
