@@ -35,7 +35,7 @@ function AttendanceReport() {
     setTimeout(() => {
       window.print();
     }, 100); // You can adjust the delay as needed
-    setIsOptionMenuVisible(true);
+   
   };
 
   return (

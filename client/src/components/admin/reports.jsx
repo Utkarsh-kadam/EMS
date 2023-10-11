@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '../utils/Navbar';
-import { VscFeedback } from "react-icons/vsc";
 import { MdGroups } from "react-icons/md";
+import {Md3P} from "react-icons/md"
 import {AiFillNotification} from "react-icons/ai"
 import {BsFileEarmarkPersonFill} from "react-icons/bs"
 import { Link,Route } from 'react-router-dom'; 
-import Header from '../utils/MGMheader';
-import Footer from '../utils/MGMfooter';
 
 
 function Reports() {
   const [events, setEvent] = useState([]);
-  const [users, setUser] = useState([]);
-  const [eventName, setEventName] = useState('');
 
 
   useEffect(() => {
@@ -21,7 +17,8 @@ function Reports() {
     axios
       .get('https://ems-api-63wi.onrender.com/event')
       .then((res) => {
-        setEvent(res.data);
+        const sortedEvents = res.data.sort((a, b) => new Date(b.startDate) - new Date(a.startDate));
+        setEvent(sortedEvents);
       })
       .catch((err) => {
         console.log(err.message);
@@ -36,12 +33,13 @@ function Reports() {
             <section className="contents">
 
               <h3>Events Reports</h3>
+              <br/>
          
             <table>
               <thead>
                 <tr>
                   <th> </th>
-                  <th>Name</th>
+                  <th>Event</th>
                   <th>60</th>
                   <th>61</th>
                   <th>62B</th>
@@ -52,7 +50,7 @@ function Reports() {
                 {events.map((event,index) => (
                   <tr key={event._id}>
                     <td>{index + 1}</td>
-                    <td>{event.name}</td>
+                    <td><strong>{event.name}</strong></td>
 
                     <td>
                     <Link
@@ -78,7 +76,7 @@ function Reports() {
                     <Link
                         to={`/feedback-analysis/${event._id}/${event.name}/${event.startDate}`} >
                       <button className="button-table">
-                        <VscFeedback className='table-icon' />
+                        <Md3P className='table-icon' />
                         </button>
                         </Link>
                     </td>

@@ -64,7 +64,7 @@ const Notice = () => {
           <input
             className="rppinput"
             type="text"
-            name="name"
+            name="nameofRpp"
             value={formData.nameofRpp}
             onChange={handleChange}
           />
@@ -75,7 +75,7 @@ const Notice = () => {
           <input
             className="rppinput"
             type="text"
-            name="designation"
+            name="partAud"
             value={formData.partAud}
             onChange={handleChange}
           />
