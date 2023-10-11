@@ -25,10 +25,6 @@ const RPP = () => {
   const handleDoneClick = () => {
     // Hide the delete buttons
     const deleteButtons = document.querySelectorAll(".delete-button");
-    deleteButtons.forEach((button) => {
-      button.style.display = "none";
-    });
-  
     // Set isOptionMenuVisible to false
     setIsOptionMenuVisible(false);
 

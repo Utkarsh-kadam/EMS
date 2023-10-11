@@ -3,6 +3,8 @@ import axios from 'axios';
 import Navbar from '../utils/Navbar';
 import { VscFeedback } from "react-icons/vsc";
 import { MdGroups } from "react-icons/md";
+import {AiFillNotification} from "react-icons/ai"
+import {BsFileEarmarkPersonFill} from "react-icons/bs"
 import { Link,Route } from 'react-router-dom'; 
 import Header from '../utils/MGMheader';
 import Footer from '../utils/MGMfooter';
@@ -40,9 +42,10 @@ function Reports() {
                 <tr>
                   <th> </th>
                   <th>Name</th>
-                 
-                  <th> </th>
-                  <th> </th>
+                  <th>60</th>
+                  <th>61</th>
+                  <th>62B</th>
+                  <th>63</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,7 +53,36 @@ function Reports() {
                   <tr key={event._id}>
                     <td>{index + 1}</td>
                     <td>{event.name}</td>
-                    
+
+                    <td>
+                    <Link
+                        to={`/rpp/${event._id}`} >
+                      <button
+                        className="button-table">
+                            < BsFileEarmarkPersonFill className='table-icon'  />
+                      </button>
+                      </Link>
+                    </td>
+
+                    <td>
+                    <Link
+                        to={`/notice/${event._id}/${event.name}/${event.startDate}/${event.venue}`} >
+                      <button
+                        className="button-table">
+                            < AiFillNotification className='table-icon'  />
+                      </button>
+                      </Link>
+                    </td>
+
+                    <td>
+                    <Link
+                        to={`/feedback-analysis/${event._id}/${event.name}/${event.startDate}`} >
+                      <button className="button-table">
+                        <VscFeedback className='table-icon' />
+                        </button>
+                        </Link>
+                    </td>
+
                     <td>
                     <Link
                         to={`/attendance-report/${event._id}/${event.name}/${event.startDate}`} >
@@ -60,14 +92,7 @@ function Reports() {
                       </button>
                       </Link>
                     </td>
-                    <td>
-                    <Link
-                        to={`/feedback-analysis/${event._id}/${event.name}/${event.startDate}`} >
-                      <button className="button-table">
-                        <VscFeedback className='table-icon' />
-                        </button>
-                        </Link>
-                    </td>
+
                   </tr>
                 ))}
               </tbody>

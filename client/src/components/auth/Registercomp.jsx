@@ -24,6 +24,7 @@ function Registration() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedclass, setselectedclass] = useState('');
 
   useEffect(() => {
     setErrors(validate(data, "signUp"));
@@ -50,7 +51,9 @@ function Registration() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        ...data,class: selectedclass, 
+      }),
     };
 
     try {
@@ -115,8 +118,8 @@ function Registration() {
       <select
         className={styles.class_dropdown}
          
-          value={data.class}
-          onChange={changeHandler}
+          value={selectedclass}
+          onChange={(e) => setselectedclass(e.target.value)}
         >
            <option  >Select Class</option>
           <option value="B.Tech 1">B.Tech 1</option>
@@ -129,9 +132,6 @@ function Registration() {
           <option value="SY 3">SY 3</option>
          
         </select>
-        
-       
-    
         
       </div>
 
