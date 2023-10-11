@@ -18,6 +18,7 @@ router.post("/register", (request, response) => {
           contact:request.body.contact,
           college:request.body.college,
           prn:request.body.prn,
+          class:request.body.class,
           role: role, //Set Role
           
         });
