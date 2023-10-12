@@ -47,6 +47,10 @@ export default function Navbar({ isAdmin }) {
               <li>
                 <Link to="/event">All Events</Link>
               </li>
+
+              <li>
+                <Link to="/cal">Calendar</Link>
+              </li>
               <li>
                 <Link to="/reports">Reports</Link>
               </li>
@@ -63,7 +67,7 @@ export default function Navbar({ isAdmin }) {
                 <Link to="/userDash">All Events</Link>
               </li>
               <li>
-                <Link to="">Event Gallery</Link>
+                <Link to="/cal">Calendar</Link>
               </li>
               </ul>
             </>

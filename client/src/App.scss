@@ -399,6 +399,7 @@ a {
     display: block;
     width: 100%;
     color: white;
+    font-size: 1.9rem;
   }
   
   .hamburger {
@@ -407,7 +408,7 @@ a {
     width: 40px;
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: #283b8b;
+    background-color: #128680;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     position: absolute;
@@ -418,7 +419,7 @@ a {
   }
   
   .hamburger:hover {
-    background-color: #2642af;
+    background-color: #128680;
   }
   
   @media screen and (max-width: 550px) {

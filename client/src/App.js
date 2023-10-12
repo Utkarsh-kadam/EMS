@@ -12,6 +12,7 @@ import FeedbackAnalysis from './components/admin/FeedbackAnalysis';
 import AttendanceReport from "./components/admin/AttendanceReport";
 import RPP from "./components/admin/RPP";
 import Notice from "./components/admin/Notice";
+import Cal from "./components/utils/Cal";
 import "./App.scss";
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
                     <Route path="/attendance-report/:eventId/:eventName/:eventDate" element={<AttendanceReport/>} />
                     <Route path="/rpp/:eventId" element={<RPP/>} />
                     <Route path="/notice/:eventId/:eventName/:eventDate/:venue" element={<Notice/>} />
+                    <Route path="/cal" element={<Cal/>} />
+
 
 
                     
