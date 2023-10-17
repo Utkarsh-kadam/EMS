@@ -5,6 +5,7 @@ const Registration = require("../db/eventRegistrationModel");
 const Event = require("../db/eventModel");
 const Attendance =  require("../db/attendanceModel");
 const Feedback = require("../db/feedbackModel");
+const axios = require('axios');
 
 
 // Endpoint to get registered events for a user
