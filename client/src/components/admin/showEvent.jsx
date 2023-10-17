@@ -31,7 +31,6 @@ function EventCard({ data,handleEdit, handleDelete }) {
             </div>
            
                 <h3 className="event-title">{name}</h3>
-                {/* <p className="event-description">{description}</p> */}
                 <p className="event-info"><strong>{formatDate(startDate)}</strong></p>
                 <p className="event-info"><strong>Venue:</strong> {venue}</p>
                 <p className="event-info"><strong>Count:</strong> {registeredUsers.length}</p>

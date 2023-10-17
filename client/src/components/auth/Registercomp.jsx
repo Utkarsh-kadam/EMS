@@ -16,6 +16,7 @@ function Registration() {
     prn:"",
     college:"",
     contact:"",
+    class:"",
     role:"user",
     IsAccepted: false,
   });
@@ -23,6 +24,7 @@ function Registration() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedclass, setselectedclass] = useState('');
 
   useEffect(() => {
     setErrors(validate(data, "signUp"));
@@ -49,7 +51,9 @@ function Registration() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        ...data,class: selectedclass, 
+      }),
     };
 
     try {
@@ -107,6 +111,28 @@ function Registration() {
           <input type="text" name="college" value={data.college} placeholder="Collage / University" onChange={changeHandler} onFocus={focusHandler}  />
         </div>
         {errors.college && touched.college && <span className={styles.error}>{errors.college}</span>}
+      </div>
+
+      <div>
+
+      <select
+        className={styles.class_dropdown}
+         
+          value={selectedclass}
+          onChange={(e) => setselectedclass(e.target.value)}
+        >
+           <option  >Select Class</option>
+          <option value="B.Tech 1">B.Tech 1</option>
+          <option value="B.Tech 2">B.Tech 2</option>
+          <option value="TY 1">TY 1</option>
+          <option value="TY 2">TY 2</option>
+          <option value="TY 3">TY 3</option>
+          <option value="SY 1">SY 1</option>
+          <option value="SY 2">SY 2</option>
+          <option value="SY 3">SY 3</option>
+         
+        </select>
+        
       </div>
 
 

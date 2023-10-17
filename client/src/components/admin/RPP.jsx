@@ -10,6 +10,7 @@ const RPP = () => {
     workingExperience: "",
     areaOfExpertise: "",
     achievements: "",
+    content:""
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,20 +26,13 @@ const RPP = () => {
   const handleDoneClick = () => {
     // Hide the delete buttons
     const deleteButtons = document.querySelectorAll(".delete-button");
-    deleteButtons.forEach((button) => {
-      button.style.display = "none";
-    });
-  
     // Set isOptionMenuVisible to false
     setIsOptionMenuVisible(false);
-
-    
-  
-    // Trigger the print dialog after a brief delay (to allow hiding to take effect)
     setTimeout(() => {
       window.print();
     }, 100); 
-  
+
+
   };
   
   return (
@@ -125,8 +119,8 @@ const RPP = () => {
           <textarea
             className="rppinput"
             type="text"
-            name="achievements"
-            value={formData.achievements}
+            name="content"
+            value={formData.content}
             onChange={handleChange}
           />
         </div>

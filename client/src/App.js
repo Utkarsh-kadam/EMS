@@ -11,6 +11,8 @@ import MarkAttendance from "./components/user/AttendanceForm";
 import FeedbackAnalysis from './components/admin/FeedbackAnalysis';
 import AttendanceReport from "./components/admin/AttendanceReport";
 import RPP from "./components/admin/RPP";
+import Notice from "./components/admin/Notice";
+import Cal from "./components/utils/Cal";
 import "./App.scss";
 
 function App() {
@@ -30,7 +32,11 @@ function App() {
                     <Route path="/attendance/:eventId/:userId/:name" element={<MarkAttendance />} />
                     <Route path="/feedback-analysis/:eventId/:eventName/:eventDate" element={<FeedbackAnalysis/>} />
                     <Route path="/attendance-report/:eventId/:eventName/:eventDate" element={<AttendanceReport/>} />
-                    <Route path="/RPP" element={<RPP/>} />
+                    <Route path="/rpp/:eventId" element={<RPP/>} />
+                    <Route path="/notice/:eventId/:eventName/:eventDate/:venue" element={<Notice/>} />
+                    <Route path="/cal" element={<Cal/>} />
+
+
 
                     
                 </Routes>

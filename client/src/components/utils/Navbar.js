@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {MdLibraryAdd} from "react-icons/md"
+import {FaThList} from "react-icons/fa"
+import {BsFillCalendarWeekFill, BsBookmarksFill} from "react-icons/bs"
+import {BiSolidReport} from "react-icons/bi"
+
+
+
 
 
 
@@ -42,13 +49,19 @@ export default function Navbar({ isAdmin }) {
             <>
             <ul>
             <li>
-                <Link to="/create-event">New Event</Link>
+             
+                <Link to="/create-event"> <MdLibraryAdd/> New Event </Link>
+               
               </li>
               <li>
-                <Link to="/event">All Events</Link>
+                <Link to="/event"><FaThList/> All Events</Link>
+              </li>
+
+              <li>
+                <Link to="/cal"><BsFillCalendarWeekFill/> Calendar</Link>
               </li>
               <li>
-                <Link to="/reports">Reports</Link>
+                <Link to="/reports"><BiSolidReport/> Reports</Link>
               </li>
              
               </ul>
@@ -57,13 +70,13 @@ export default function Navbar({ isAdmin }) {
             <>
             <ul>
               <li>
-                <Link to="/userRegistered">Registered Events</Link>
+                <Link to="/userRegistered"><BsBookmarksFill/> Registered Events</Link>
               </li>
               <li>
-                <Link to="/userDash">All Events</Link>
+                <Link to="/userDash"><FaThList/> All Events</Link>
               </li>
               <li>
-                <Link to="">Event Gallery</Link>
+                <Link to="/cal"><BsFillCalendarWeekFill/> Calendar</Link>
               </li>
               </ul>
             </>
