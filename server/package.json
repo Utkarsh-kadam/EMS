@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon start",
-    "stop": "echo 'Stopping the Node.js application'"
+    "stop": "echo 'Stopping the Node.js application'",
+    "reminder-email-task":"node reminderEmailTask.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "moment-timezone": "^0.5.43",
     "mongodb": "3.6",
     "mongoose": "^7.5.0",
-    "node-datetime": "^2.1.2"
+    "node-datetime": "^2.1.2",
+    "nodemailer": "^6.9.6"
   }
 }

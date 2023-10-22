@@ -1,0 +1,4 @@
+cron:
+  - name: reminder-emails
+    schedule: "0 * * * *" 
+    command: npm run reminder-email-task
