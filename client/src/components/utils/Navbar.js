@@ -56,10 +56,6 @@ export default function Navbar({ isAdmin }) {
               <li>
                 <Link to="/event"><FaThList/> All Events</Link>
               </li>
-
-              <li>
-                <Link to="/cal"><BsFillCalendarWeekFill/> Calendar</Link>
-              </li>
               <li>
                 <Link to="/reports"><BiSolidReport/> Reports</Link>
               </li>

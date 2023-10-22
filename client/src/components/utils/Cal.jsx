@@ -41,12 +41,11 @@ function Cal() {
         </div>
       );
       
-   
 
 
     return (
         <div>
-        <Navbar isAdmin={true}/>
+        <Navbar isAdmin={false}/>
         <br></br>
         <div className='feedback-analysis'>
             
