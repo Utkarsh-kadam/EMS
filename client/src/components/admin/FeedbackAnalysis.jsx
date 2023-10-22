@@ -8,6 +8,7 @@ import Footer from '../utils/MGMfooter';
 
 
 
+
 function FeedbackAnalysis() {
   const [loading, setLoading] = useState(true);
   const [poMatrix, setPoMatrix] = useState([]); // Array to store PO Matrix [{ name: 'PO1', mapping: 'Mapping1' }, ...]
@@ -20,6 +21,22 @@ function FeedbackAnalysis() {
   const {eventId,eventName,eventDate}=useParams();
   const [isOptionMenuVisible, setIsOptionMenuVisible] = useState(true); // State to control option menu visibility
 
+
+   // Function to fetch and set PO and PSO data
+   useEffect(() => {
+    axios
+      .get(`http://localhost:3000/admin/feedbackanalysis/${eventId}`)
+      .then((res) => {
+        const data = res.data;
+        setPoMatrix(data.poMatrix);
+        setPsoMatrix(data.psoMatrix);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setLoading(false);
+      });
+  }, [eventId]);
 
     // Function to fetch and set question analysis
     useEffect(() => {
@@ -35,9 +52,13 @@ function FeedbackAnalysis() {
         });
     }, [eventId]);
 
+    
+
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  
 
   function formatDate(dateString) {
     const date = new Date(dateString);
@@ -72,6 +93,9 @@ function FeedbackAnalysis() {
     setPsoMatrix(updatedPsoMatrix);
   };
 
+
+  
+
   const handleDoneClick = () => {
     // Hide the delete buttons
     const deleteButtons = document.querySelectorAll(".delete-button");
@@ -82,12 +106,33 @@ function FeedbackAnalysis() {
     // Set isOptionMenuVisible to false
     setIsOptionMenuVisible(false);
   
-    // Trigger the print dialog after a brief delay (to allow hiding to take effect)
-    setTimeout(() => {
-      window.print();
-    }, 100); 
+    const dataToSave = {
+      eventId,
+      poMatrix,
+      psoMatrix,
+    };
   
+    // Save PO and PSO data to the server
+    axios
+      .post("http://localhost:3000/admin/feedbackanalysis", dataToSave)
+      .then((response) => {
+        console.log("Data saved successfully");
+  
+        // Debugging: Add a log message before printing
+        console.log("Printing...");
+        
+        // Open the print dialog
+        window.print();
+  
+        // Debugging: Add a log message after printing
+        console.log("Printed.");
+      })
+      .catch((error) => {
+        console.error("Failed to save data:", error);
+      });
   };
+  
+
   
 
 

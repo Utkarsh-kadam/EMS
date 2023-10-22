@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../utils/MGMfooter";
+import { useParams } from 'react-router-dom';
 import Header from "../utils/MGMheader";
+import axios from "axios";
+
+
 const RPP = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +16,9 @@ const RPP = () => {
     achievements: "",
     content:""
   });
+
+  const { eventId } = useParams();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -24,16 +31,55 @@ const RPP = () => {
 
 
   const handleDoneClick = () => {
-    // Hide the delete buttons
-    const deleteButtons = document.querySelectorAll(".delete-button");
-    // Set isOptionMenuVisible to false
     setIsOptionMenuVisible(false);
-    setTimeout(() => {
-      window.print();
-    }, 100); 
 
+    // Prepare the RPP data to be sent to the server
+    const rppData = {
+      eventId,
+      name: formData.name,
+      contactNo: formData.contactNo,
+      designation: formData.designation,
+      institute: formData.institute,
+      workingExperience: formData.workingExperience,
+      areaOfExpertise: formData.areaOfExpertise,
+      achievements: formData.achievements,
+      content: formData.content,
+    };
 
+    // Send a POST request to save the RPP data
+    axios
+      .post("https://ems-api-63wi.onrender.com//admin/rpp", rppData)
+      .then((response) => {
+        console.log("RPP data saved successfully");
+        setTimeout(() => {
+          window.print();
+        }, 100);
+      })
+      .catch((error) => {
+        console.error("Failed to save RPP data:", error);
+      });
   };
+
+  useEffect(() => {
+    axios
+      .get(`https://ems-api-63wi.onrender.com//admin/rpp/${eventId}`)
+      .then((response) => {
+        const savedRPPData = response.data;
+        setFormData({
+          name: savedRPPData.name,
+          contactNo: savedRPPData.contactNo,
+          designation: savedRPPData.designation,
+          institute: savedRPPData.institute,
+          workingExperience: savedRPPData.workingExperience,
+          areaOfExpertise: savedRPPData.areaOfExpertise,
+          achievements: savedRPPData.achievements,
+          content: savedRPPData.content,
+        });
+      })
+      .catch((error) => {
+        console.error("Failed to retrieve RPP data:", error);
+      });
+  }, [eventId]);
   
   return (
     <div className="feedback-analysis">
